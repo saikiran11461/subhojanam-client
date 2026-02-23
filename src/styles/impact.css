@@ -1,0 +1,139 @@
+.impact-section {
+  background: linear-gradient(180deg, #f8f6f3 0%, #f3f1ee 100%);
+  padding: 100px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.impact-section::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  left: -20%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(10, 151, 239, 0.05) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.impact-section h2 {
+  color: #0A97EF;
+  font-size: 38px;
+  margin-bottom: 15px;
+  font-weight: 700;
+  position: relative;
+  animation: fadeInDown 0.8s ease;
+}
+
+.impact-section h2::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, #0A97EF, transparent);
+  border-radius: 2px;
+}
+
+.impact-sub {
+  color: #666;
+  margin-bottom: 70px;
+  font-size: 17px;
+  position: relative;
+}
+
+.impact-cards {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+.impact-card {
+  max-width: 220px;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  padding: 20px;
+  border-radius: 20px;
+  position: relative;
+}
+
+.impact-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(10, 151, 239, 0.05) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.impact-card:hover::before {
+  opacity: 1;
+}
+
+.impact-card:hover {
+  transform: translateY(-12px);
+}
+
+.circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #e8f4f8 0%, #e8e4dd 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  margin: 0 auto 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.impact-card:hover .circle {
+  background: linear-gradient(135deg, #0A97EF 0%, #2196f3 100%);
+  transform: rotate(360deg) scale(1.1);
+  box-shadow: 0 8px 25px rgba(10, 151, 239, 0.3);
+}
+
+.impact-card h3 {
+  font-size: 36px;
+  margin-bottom: 10px;
+  font-weight: 700;
+  color: #0A97EF;
+  transition: all 0.3s ease;
+}
+
+.impact-card:hover h3 {
+  transform: scale(1.1);
+}
+
+.impact-card h4 {
+  margin-bottom: 12px;
+  font-weight: 600;
+  font-size: 18px;
+  color: #333;
+}
+
+.impact-card p {
+  font-size: 14px;
+  color: #777;
+  line-height: 1.6;
+}
+
+@media (max-width: 968px) {
+  .impact-cards {
+    gap: 50px;
+  }
+  
+  .impact-section h2 {
+    font-size: 30px;
+  }
+}

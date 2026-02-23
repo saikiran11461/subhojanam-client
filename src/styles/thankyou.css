@@ -1,0 +1,389 @@
+.thankyou-page {
+  min-height: 100vh;
+  background: linear-gradient(180deg, hsl(35, 30%, 97%), hsl(38, 40%, 94%));
+  font-family: 'Lato', sans-serif;
+  color: hsl(25, 40%, 12%);
+}
+
+.thankyou-top-bar {
+  height: 6px;
+  width: 100%;
+  background: linear-gradient(135deg, hsl(32, 85%, 52%), hsl(42, 90%, 58%));
+}
+
+.thankyou-container {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 40px 16px 60px;
+}
+
+@media (min-width: 640px) {
+  .thankyou-container {
+    padding: 64px 16px 80px;
+  }
+}
+
+/* Success Icon */
+.success-icon-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+  animation: scale-in 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.success-icon-circle {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background-color: hsl(140, 25%, 32%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.success-icon-circle svg {
+  width: 48px;
+  height: 48px;
+  color: #fff;
+}
+
+.success-heart-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: hsl(42, 90%, 58%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.success-heart-badge svg {
+  width: 16px;
+  height: 16px;
+  color: hsl(25, 40%, 12%);
+  fill: currentColor;
+}
+
+/* Heading */
+.thankyou-heading {
+  text-align: center;
+  margin-bottom: 32px;
+  animation: float-up 0.8s ease-out forwards;
+  animation-delay: 0.2s;
+  opacity: 0;
+}
+
+.thankyou-heading h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 12px;
+  color: hsl(25, 40%, 12%);
+}
+
+@media (min-width: 640px) {
+  .thankyou-heading h1 {
+    font-size: 2.5rem;
+  }
+}
+
+.thankyou-heading .subtitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: hsl(32, 85%, 52%);
+  margin: 0;
+}
+
+/* Message Card */
+.message-card {
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 24px;
+  background: #ffffff;
+  border: 1px solid #d6eaff;
+  box-shadow: 0 4px 24px -4px hsl(32 85% 52% / 0.15);
+  animation: float-up 0.8s ease-out forwards;
+  animation-delay: 0.4s;
+  opacity: 0;
+}
+
+@media (min-width: 640px) {
+  .message-card {
+    padding: 32px;
+  }
+}
+
+.message-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.message-card-icon {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, hsl(32, 85%, 52%), hsl(42, 90%, 58%));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.message-card-icon svg {
+  width: 24px;
+  height: 24px;
+  color: #fff;
+}
+
+.message-card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 4px;
+  color: hsl(25, 40%, 12%);
+}
+
+.message-card-text {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: hsl(25, 15%, 45%);
+  margin: 0;
+}
+
+.message-card-text strong {
+  color: hsl(25, 40%, 12%);
+}
+
+.quote-box {
+  border-radius: 12px;
+  padding: 16px;
+  background: #f0f8ff;
+  border: 1px solid #d6eaff;
+}
+
+.quote-box p {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.875rem;
+  font-style: italic;
+  text-align: center;
+  color: hsl(25, 15%, 45%);
+  margin: 0;
+}
+
+/* Amount Card */
+.amount-card {
+  border-radius: 16px;
+  padding: 24px;
+  text-align: center;
+  margin-bottom: 24px;
+  background: linear-gradient(135deg, hsl(32, 85%, 52%) 0%, hsl(15, 70%, 45%) 100%);
+  animation: float-up 0.8s ease-out forwards;
+  animation-delay: 0.5s;
+  opacity: 0;
+}
+
+.amount-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0 0 4px;
+}
+
+.amount-value {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+}
+
+@media (min-width: 640px) {
+  .amount-value {
+    font-size: 3rem;
+  }
+}
+
+.amount-blessing {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 8px 0 0;
+}
+
+/* Payment Details */
+.payment-details-card {
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 24px;
+  background: #ffffff;
+  border: 1px solid #d6eaff;
+  box-shadow: 0 4px 24px -4px hsl(32 85% 52% / 0.15);
+  animation: float-up 0.8s ease-out forwards;
+  animation-delay: 0.6s;
+  opacity: 0;
+}
+
+@media (min-width: 640px) {
+  .payment-details-card {
+    padding: 32px;
+  }
+}
+
+.payment-details-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: hsl(25, 40%, 12%);
+  margin: 0 0 16px;
+}
+
+.payment-detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #d6eaff;
+}
+
+.payment-detail-row:last-child {
+  border-bottom: none;
+}
+
+.payment-detail-label {
+  font-size: 0.875rem;
+  color: hsl(25, 15%, 45%);
+}
+
+.payment-detail-value {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: hsl(25, 40%, 12%);
+  text-align: right;
+  max-width: 60%;
+  word-break: break-all;
+}
+
+.payment-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid #d6eaff;
+}
+
+.payment-total-label {
+  font-weight: 600;
+  color: hsl(25, 40%, 12%);
+}
+
+.payment-total-value {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: hsl(32, 85%, 52%);
+}
+
+/* Action Buttons */
+.thankyou-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  animation: float-up 0.8s ease-out forwards;
+  animation-delay: 0.7s;
+  opacity: 0;
+}
+
+@media (min-width: 640px) {
+  .thankyou-actions {
+    flex-direction: row;
+  }
+}
+
+.btn-download,
+.btn-back {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 12px;
+  padding: 14px 24px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: opacity 0.2s, transform 0.1s;
+  text-decoration: none;
+  font-family: 'Lato', sans-serif;
+}
+
+.btn-download:hover,
+.btn-back:hover {
+  opacity: 0.9;
+}
+
+.btn-download:active,
+.btn-back:active {
+  transform: scale(0.98);
+}
+
+.btn-download {
+  background: linear-gradient(135deg, hsl(32, 85%, 52%), hsl(42, 90%, 58%));
+  color: #fff;
+}
+
+.btn-download svg,
+.btn-back svg {
+  width: 16px;
+  height: 16px;
+}
+
+.btn-back {
+  background: #f0f8ff;
+  color: hsl(25, 40%, 12%);
+  border: 1px solid #d6eaff;
+}
+
+/* Footer */
+.thankyou-footer {
+  text-align: center;
+  font-size: 0.75rem;
+  color: hsl(25, 15%, 45%);
+  margin-top: 40px;
+  line-height: 1.8;
+  animation: float-up 0.8s ease-out forwards;
+  animation-delay: 0.8s;
+  opacity: 0;
+}
+
+.thankyou-footer a {
+  color: hsl(32, 85%, 52%);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Animations */
+@keyframes float-up {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scale-in {
+  0% { opacity: 0; transform: scale(0.5); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px hsl(42 90% 58% / 0.2); }
+  50% { box-shadow: 0 0 40px hsl(42 90% 58% / 0.4); }
+}

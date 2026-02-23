@@ -1,0 +1,146 @@
+.trust {
+  background: linear-gradient(135deg, #e8f4f8 0%, #dce6ee 100%);
+  padding: 100px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.trust::before {
+  content: '';
+  position: absolute;
+  top: -25%;
+  left: -15%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(10, 151, 239, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.trust h2 {
+  font-size: 38px;
+  color: #0A97EF;
+  margin-bottom: 15px;
+  font-weight: 700;
+  position: relative;
+  z-index: 1;
+}
+
+.trust h2::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, #0A97EF, transparent);
+  border-radius: 2px;
+}
+
+.trust-sub {
+  color: #555;
+  margin-bottom: 70px;
+  font-size: 17px;
+  position: relative;
+  z-index: 1;
+}
+
+.trust-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: center;
+  gap: 34px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.trust-card {
+  background: white;
+  width: 90%;
+  padding: 30px 25px;
+  border-radius: 25px;
+  transition: all 0.4s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 2px solid transparent;
+  cursor: pointer;
+  position: relative;
+}
+
+.trust-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 25px;
+  background: linear-gradient(135deg, rgba(10, 151, 239, 0.05) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.trust-card:hover::before {
+  opacity: 1;
+}
+
+.trust-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  border-color: #0A97EF;
+}
+
+.icon-circle {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 25px;
+  background: linear-gradient(135deg, #e3f2fd 0%, #cfe2f3 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  transition: all 0.4s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.trust-card:hover .icon-circle {
+  background: linear-gradient(135deg, #0A97EF 0%, #2196f3 100%);
+  transform: rotate(360deg) scale(1.1);
+  box-shadow: 0 6px 20px rgba(10, 151, 239, 0.3);
+}
+
+.trust-card h3 {
+  margin-bottom: 18px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+}
+
+.trust-card p {
+  font-size: 15px;
+  color: #666;
+  line-height: 1.7;
+}
+
+@media (max-width: 968px) {
+  .trust h2 {
+    font-size: 30px;
+  }
+  
+  .trust-cards {
+    gap: 25px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .trust-card {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .trust-cards {
+    grid-template-columns: 1fr;
+  }
+}
