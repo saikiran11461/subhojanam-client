@@ -19,6 +19,7 @@ function DonationSection() {
     sevaDate: "",
     dob: "",
     certificate: false,
+    prasadam: false,
     updates: true
   });
 
@@ -261,6 +262,7 @@ function DonationSection() {
             <button className="close-btn" onClick={() => setShowForm(false)}>✕</button>
 
             <h3>Complete Your Seva</h3>
+            <p className="modal-subtitle">Your contribution will feed the hungry today.</p>
 
             <div className="form-grid">
 
@@ -287,17 +289,28 @@ function DonationSection() {
                 </div>
               </div>
 
-              <div className="amount-display-box">
-                <div className="amount-label">Donation Amount</div>
-                <div className="amount-value">₹{finalAmount.toLocaleString()}</div>
-                <div className="meal-message">
-                  ❤️ Your donation will feed {meals} caregivers today
-                </div>
+              <div className="amount-field-wrapper">
+                <label className="amount-label">Donation Amount (₹)</label>
+                <input 
+                  type="text" 
+                  className="form-field amount-input" 
+                  value={`₹${finalAmount.toLocaleString()}`}
+                  readOnly
+                />
               </div>
+
+              <p className="donation-message">
+                ❤️ Your donation will feed {meals} caregivers today
+              </p>
 
               <label className="checkbox-row">
                 <input type="checkbox" name="certificate" onChange={handleChange} />
                 <span>I would like to receive 80(G) Certificate</span>
+              </label>
+
+              <label className="checkbox-row">
+                <input type="checkbox" name="prasadam" onChange={handleChange} />
+                <span>I would like to receive Maha Prasadam</span>
               </label>
 
               <label className="checkbox-row">
@@ -314,6 +327,10 @@ function DonationSection() {
             >
               {loading ? "Processing..." : `Proceed to Pay ₹${finalAmount.toLocaleString()} 🔒`}
             </button>
+
+            <div className="modal-footer-text">
+              100% Secure Payment | 80G Tax Exempt
+            </div>
 
           </div>
         </div>
