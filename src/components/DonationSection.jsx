@@ -79,7 +79,7 @@ function DonationSection() {
           : "create-subscription";
 
       const response = await fetch(
-        `http://localhost:2345/api/payment/${endpoint}`,
+        `${import.meta.env.VITE_API_URL}/api/payment/${endpoint}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
