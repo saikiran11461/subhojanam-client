@@ -15,7 +15,7 @@ function Impact() {
 
         <div className="impact-card">
           <div className="circle"><FaUtensils /></div>
-          <h3>3,65,000+</h3>
+          <h3>45L+</h3>
           <h4>Stomachs Filled with Hope</h4>
           <p>Ensuring no one sleeps hungry on our watch.</p>
         </div>
@@ -37,7 +37,7 @@ function Impact() {
         <div className="impact-card">
           <div className="circle"><GiMeditation /></div>
           <h3>100%</h3>
-          <h4>Pure Devotion</h4>
+          <h4>Meals Served with Love Daily</h4>
           <p>Every grain offered to the Divine before it's served.</p>
         </div>
 

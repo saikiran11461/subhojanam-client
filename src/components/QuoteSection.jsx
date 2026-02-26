@@ -12,16 +12,18 @@ function QuoteSection() {
         </div>
 
         <div className="right">
-          <div className="quote-mark">“</div>
+         <div className="quote-mark">“</div>
 
           <p className="quote-text">
-            No one within a ten-mile radius of our center should go hungry.
+            No one within a ten-mile radius of our center should go hungry
           </p>
 
-          <h3>Srila Prabhupada</h3>
-          <span>
-            Founder-Acharya of Worldwide Hare Krishna Movement
-          </span>
+          <div className="author-section">
+            <h3>— Srila Prabhupada</h3>
+            <span className="author-title">
+              Founder-Acharya of Worldwide Hare Krishna Movement
+            </span>
+          </div>
         </div>
 
       </div>

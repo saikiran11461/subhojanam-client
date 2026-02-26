@@ -22,7 +22,6 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-container">
         <div className="footer-grid">
-          {/* Brand & Address */}
           <div className="footer-brand">
             <h3>Subhojanam</h3>
             <p className="footer-subtitle">ISKCON Hospital Feeding Program</p>
@@ -44,7 +43,6 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Quick Links */}
           <div className="footer-links">
             <h4>Quick Links</h4>
             <ul>
@@ -56,7 +54,6 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Social & Donate */}
           <div className="footer-social">
             <h4>Connect With Us</h4>
             <div className="footer-social-icons">
@@ -79,7 +76,6 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Bottom Bar */}
         <div className="footer-bottom">
           <p>© 2026 ISKCON Visakhapatnam — Subhojanam Seva</p>
           <div className="footer-bottom-links">

@@ -2,6 +2,7 @@ import { CheckCircle, Heart, Utensils, ArrowLeft, Download } from "lucide-react"
 import { useSearchParams } from "react-router-dom";
 import "../styles/thankyou.css";
 import logo from "../assets/logo.png"
+
 const ThankYouPage = () => {
   const [searchParams] = useSearchParams();
 
@@ -31,24 +32,15 @@ const ThankYouPage = () => {
       <div className="thankyou-top-bar" />
 
       <div className="thankyou-container">
-       
-        <div className="success-icon-wrapper">
-          {/* <div className="success-icon-circle">
-            <CheckCircle />
-            <div className="success-heart-badge">
-              <Heart />
-            </div>
-          </div> */}
-           <img src={logo} width={100} alt="" />
+        <div className="thankyou-logo">
+          <img src={logo} width={100} alt="Subhojanam Logo" />
         </div>
 
-      
         <div className="thankyou-heading">
           <h1>Hare Krishna! 🙏</h1>
           <p className="subtitle">Thank You for Your Generous Donation</p>
         </div>
 
-      
         <div className="message-card">
           <div className="message-card-header">
             <div className="message-card-icon">
@@ -66,14 +58,12 @@ const ThankYouPage = () => {
           </div>
         </div>
 
-       
         <div className="amount-card">
           <p className="amount-label">Amount Donated</p>
           <p className="amount-value">₹{paymentDetails.amount}</p>
           <p className="amount-blessing">May Lord Krishna bless you abundantly</p>
         </div>
 
-       
         <div className="payment-details-card">
           <h3 className="payment-details-title">Payment Details</h3>
           {details.map((item) => (
@@ -88,7 +78,6 @@ const ThankYouPage = () => {
           </div>
         </div>
 
-       
         <div className="thankyou-actions">
           <button className="btn-download" onClick={() => window.print()}>
             <Download />
@@ -100,7 +89,6 @@ const ThankYouPage = () => {
           </a>
         </div>
 
-       
         <p className="thankyou-footer">
           A confirmation email has been sent to {paymentDetails.email}.<br />
           For queries, contact{" "}

@@ -16,7 +16,7 @@ function SpecialSeva() {
 
       <div className="special-buttons">
         <button className="outline-btn">
-          Sponsor Birthday Seva
+         Sponsor for Birthday 
         </button>
 
         <button className="outline-btn">

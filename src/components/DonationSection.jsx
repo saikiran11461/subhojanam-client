@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Lock, FileText, Check } from "lucide-react";
 import "../styles/donation.css";
 
 function DonationSection() {
@@ -91,6 +92,9 @@ function DonationSection() {
 
       const data = await response.json();
 
+      console.log("Response status:", response.status);
+      console.log("Response data:", data);
+
       if (!data.key) {
         alert("Payment initialization failed");
         setLoading(false);
@@ -150,7 +154,7 @@ function DonationSection() {
       setLoading(false);
 
     } catch (error) {
-      console.error(error);
+      console.error("Frontend Error:", error);
       alert("Payment failed. Please try again.");
       setLoading(false);
     }
@@ -202,23 +206,17 @@ function DonationSection() {
             ))}
           </div>
 
-          {type === "one" ? (
-            <input
-              type="number"
-              placeholder="Enter custom amount (₹)"
-              className="input-box"
-              value={customAmount}
-              onChange={handleCustomChange}
-            />
-          ) : (
-            <p style={{ marginTop: "10px", fontSize: "14px", color: "#777" }}>
-              Custom amount is not available for monthly donations.
-            </p>
-          )}
+          <input
+            type="number"
+            placeholder="Enter custom amount (₹)"
+            className="input-box"
+            value={customAmount}
+            onChange={handleCustomChange}
+          />
 
           {finalAmount > 0 && (
             <p className="meal-info">
-              This will serve {meals} hot meals
+              This will serve {meals} hot meals {type === "monthly" ? "every month" : ""}
             </p>
           )}
 
@@ -231,7 +229,26 @@ function DonationSection() {
           </button>
 
           <div className="small-info">
-            🔒 Secure Payment • 📄 80G Tax Exempt • ✓ 100% to Food
+            <span className="info-item">
+              <span className="info-icon-circle">
+                <Lock className="info-icon" size={11} />
+              </span>
+              Secure Payment
+            </span>
+            <span className="info-separator">•</span>
+            <span className="info-item">
+              <span className="info-icon-circle">
+                <FileText className="info-icon" size={11} />
+              </span>
+              80G Tax Exempt
+            </span>
+            <span className="info-separator">•</span>
+            <span className="info-item">
+              <span className="info-icon-circle">
+                <Check className="info-icon" size={11} />
+              </span>
+              100% to Food
+            </span>
           </div>
 
         </div>
@@ -260,8 +277,14 @@ function DonationSection() {
               </select>
 
               <div className="date-row">
-                <input type="date" name="sevaDate" className="form-field" onChange={handleChange} />
-                <input type="date" name="dob" className="form-field" onChange={handleChange} />
+                <div className="date-field-wrapper">
+                  <label className="date-label">Seva Date</label>
+                  <input type="date" name="sevaDate" className="form-field" onChange={handleChange} />
+                </div>
+                <div className="date-field-wrapper">
+                  <label className="date-label">Date of Birth</label>
+                  <input type="date" name="dob" className="form-field" onChange={handleChange} />
+                </div>
               </div>
 
               <div className="amount-display-box">

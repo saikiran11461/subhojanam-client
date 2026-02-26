@@ -1,0 +1,273 @@
+import { useState, useEffect } from "react"
+import { Search, Download, Filter, Calendar } from "lucide-react"
+import adminAPI from "../../services/adminApi"
+import "../styles/Transactions.css"
+
+function Transactions() {
+  const [transactions, setTransactions] = useState([])
+  const [stats, setStats] = useState(null)
+  const [pagination, setPagination] = useState(null)
+  const [searchTerm, setSearchTerm] = useState("")
+  const [filterStatus, setFilterStatus] = useState("all")
+  const [currentPage, setCurrentPage] = useState(1)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+
+  useEffect(() => {
+    fetchTransactions()
+  }, [currentPage, filterStatus])
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (currentPage === 1) {
+        fetchTransactions()
+      } else {
+        setCurrentPage(1)
+      }
+    }, 500)
+
+    return () => clearTimeout(timer)
+  }, [searchTerm])
+
+  useEffect(() => {
+    fetchStats()
+  }, [filterStatus])
+
+  const fetchTransactions = async () => {
+    try {
+      setLoading(true)
+      const response = await adminAPI.getAllTransactions({
+        page: currentPage,
+        limit: 10,
+        search: searchTerm,
+        status: filterStatus
+      })
+
+      setTransactions(response.transactions)
+      setPagination(response.pagination)
+      setError(null)
+    } catch (err) {
+      console.error("Error fetching transactions:", err)
+      setError("Failed to load transactions")
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const fetchStats = async () => {
+    try {
+      const response = await adminAPI.getTransactionStats({
+        status: filterStatus
+      })
+      setStats(response.stats)
+    } catch (err) {
+      console.error("Error fetching stats:", err)
+    }
+  }
+
+  const handleExport = async () => {
+    try {
+      const response = await adminAPI.exportTransactions({
+        status: filterStatus
+      })
+
+      if (response.data && response.data.length > 0) {
+        const headers = Object.keys(response.data[0])
+        const csvContent = [
+          headers.join(","),
+          ...response.data.map(row => 
+            headers.map(header => {
+              const value = row[header]
+              return typeof value === 'string' && value.includes(',') 
+                ? `"${value.replace(/"/g, '""')}"` 
+                : value
+            }).join(",")
+          )
+        ].join("\n")
+
+        const blob = new Blob([csvContent], { type: "text/csv" })
+        const url = window.URL.createObjectURL(blob)
+        const a = document.createElement("a")
+        a.href = url
+        a.download = `transactions_${new Date().toISOString().split('T')[0]}.csv`
+        document.body.appendChild(a)
+        a.click()
+        document.body.removeChild(a)
+        window.URL.revokeObjectURL(url)
+      }
+    } catch (err) {
+      console.error("Error exporting transactions:", err)
+      alert("Failed to export transactions")
+    }
+  }
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString)
+    return date.toLocaleString('en-IN', { 
+      year: 'numeric', 
+      month: '2-digit', 
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit'
+    })
+  }
+
+  return (
+    <div className="transactions-page">
+      <div className="page-header">
+        <div>
+          <h1>Transactions</h1>
+          <p>Manage and track all donation transactions</p>
+        </div>
+        <button className="export-btn" onClick={handleExport}>
+          <Download size={18} />
+          Export CSV
+        </button>
+      </div>
+
+      {loading && !transactions.length ? (
+        <div style={{ textAlign: 'center', padding: '40px' }}>
+          <p>Loading transactions...</p>
+        </div>
+      ) : error ? (
+        <div style={{ textAlign: 'center', padding: '40px', color: 'red' }}>
+          <p>{error}</p>
+          <button onClick={fetchTransactions}>Retry</button>
+        </div>
+      ) : (
+        <>
+          <div className="transactions-stats">
+            <div className="stat-box">
+              <p>Total Transactions</p>
+              <h3>{stats?.totalTransactions || 0}</h3>
+            </div>
+            <div className="stat-box">
+              <p>Total Amount</p>
+              <h3>₹{(stats?.totalAmount || 0).toLocaleString()}</h3>
+            </div>
+            <div className="stat-box">
+              <p>Successful</p>
+              <h3>{stats?.successfulTransactions || 0}</h3>
+            </div>
+          </div>
+
+          <div className="filters-section">
+            <div className="search-box">
+              <Search size={18} />
+              <input
+                type="text"
+                placeholder="Search by name, email, or transaction ID..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+            </div>
+
+            <div className="filter-controls">
+              <div className="filter-group">
+                <Filter size={18} />
+                <select 
+                  value={filterStatus} 
+                  onChange={(e) => {
+                    setFilterStatus(e.target.value)
+                    setCurrentPage(1)
+                  }}
+                >
+                  <option value="all">All Status</option>
+                  <option value="completed">Completed</option>
+                  <option value="pending">Pending</option>
+                  <option value="failed">Failed</option>
+                </select>
+              </div>
+
+              <div className="filter-group">
+                <Calendar size={18} />
+                <input type="date" />
+              </div>
+            </div>
+          </div>
+
+          <div className="transactions-table-wrapper">
+            {transactions.length === 0 ? (
+              <p style={{ textAlign: 'center', padding: '40px', color: '#666' }}>
+                No transactions found
+              </p>
+            ) : (
+              <table className="transactions-table">
+                <thead>
+                  <tr>
+                    <th>Transaction ID</th>
+                    <th>Donor Details</th>
+                    <th>Contact</th>
+                    <th>Amount</th>
+                    <th>Date & Time</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {transactions.map((txn) => (
+                    <tr key={txn.id}>
+                      <td className="txn-id">{txn.id}</td>
+                      <td>
+                        <div className="donor-details">
+                          <p className="donor-name">{txn.name}</p>
+                          <p className="donor-email">{txn.email}</p>
+                        </div>
+                      </td>
+                      <td className="mobile">{txn.mobile}</td>
+                      <td className="amount">₹{txn.amount.toLocaleString()}</td>
+                      <td className="date">{formatDate(txn.date)}</td>
+                      <td>
+                        <span className={`status-badge ${txn.status.toLowerCase()}`}>
+                          {txn.status}
+                        </span>
+                      </td>
+                      <td>
+                        <button className="action-btn view-btn">View</button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            )}
+          </div>
+
+          {pagination && pagination.totalPages > 1 && (
+            <div className="pagination">
+              <button 
+                className="page-btn"
+                onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
+                disabled={currentPage === 1 || loading}
+              >
+                Previous
+              </button>
+              
+              <div className="page-numbers">
+                {[...Array(pagination.totalPages)].map((_, index) => (
+                  <button
+                    key={index}
+                    className={`page-number ${currentPage === index + 1 ? 'active' : ''}`}
+                    onClick={() => setCurrentPage(index + 1)}
+                    disabled={loading}
+                  >
+                    {index + 1}
+                  </button>
+                ))}
+              </div>
+
+              <button 
+                className="page-btn"
+                onClick={() => setCurrentPage(prev => Math.min(pagination.totalPages, prev + 1))}
+                disabled={currentPage === pagination.totalPages || loading}
+              >
+                Next
+              </button>
+            </div>
+          )}
+        </>
+      )}
+    </div>
+  )
+}
+
+export default Transactions

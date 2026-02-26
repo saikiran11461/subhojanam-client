@@ -56,7 +56,6 @@
   z-index: 1;
 }
 
-/* Horizontal line */
 .steps::before {
   content: "";
   position: absolute;
@@ -116,7 +115,6 @@
   line-height: 1.7;
 }
 
-/* Green info box */
 .green-box {
   max-width: 850px;
   margin: 0 auto;

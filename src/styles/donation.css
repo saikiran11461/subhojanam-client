@@ -1,6 +1,3 @@
-/* =============================
-   MAIN SECTION
-============================= */
 
 .main-section {
   background: linear-gradient(135deg, #e8f4f8 0%, #dce6ee 100%);
@@ -22,18 +19,15 @@
   border-radius: 50%;
 }
 
-/* =============================
-   CARD CONTAINER BOX
-============================= */
 
 .box {
   background: white;
-  max-width: 520px;
+  max-width: 558px;
   width: 100%;
   padding: 35px 30px;
-  border-radius: 25px;
+  border-radius: 20px;
   text-align: center;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
   position: relative;
   z-index: 1;
   animation: scaleIn 0.5s ease;
@@ -53,42 +47,39 @@
 
 .box h2 {
   color: #0A97EF;
-  margin-bottom: 8px;
-  font-size: 26px;
+  margin-bottom: 6px;
+  font-size: 22px;
   font-weight: 700;
 }
 
 .box p {
   color: #666;
-  margin-bottom: 25px;
-  font-size: 14px;
-  line-height: 1.5;
+  margin-bottom: 18px;
+  font-size: 13px;
+  line-height: 1.4;
 }
 
-/* =============================
-   TOGGLE BUTTONS
-============================= */
 
 .toggle {
   background: linear-gradient(135deg, #e8f4f8 0%, #d5dde4 100%);
-  border-radius: 30px;
+  border-radius: 25px;
   display: flex;
-  margin-bottom: 25px;
-  padding: 4px;
+  margin-bottom: 18px;
+  padding: 3px;
   box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.08);
 }
 
 .toggle button {
   flex: 1;
-  padding: 12px;
+  padding: 10px;
   border: none;
   background: transparent;
-  border-radius: 26px;
+  border-radius: 22px;
   cursor: pointer;
   font-weight: 600;
   transition: all 0.3s ease;
   color: #555;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .toggle .active {
@@ -97,21 +88,18 @@
   box-shadow: 0 4px 12px rgba(10, 151, 239, 0.3);
 }
 
-/* =============================
-   DONATION CARDS
-============================= */
 
 .cards {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 15px;
-  margin-bottom: 25px;
+  gap: 12px;
+  margin-bottom: 18px;
 }
 
 .card {
   background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-  padding: 18px;
-  border-radius: 15px;
+  padding: 22px;
+  border-radius: 12px;
   text-align: left;
   border: 2px solid #e0e0e0;
   position: relative;
@@ -120,65 +108,64 @@
 }
 
 .card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
   border-color: #0A97EF;
+  background: #FEF2E1;
 }
 
-.card.selected {
+.card.special {
+  background: #FEF2E1;
   border: 2px solid #0A97EF;
-  background: linear-gradient(135deg, #e3f2fd 0%, #ffffff 100%);
-  box-shadow: 0 6px 20px rgba(10, 151, 239, 0.25);
-}
-
-.card h3 {
-  color: #0A97EF;
-  font-size: 22px;
-  margin-bottom: 4px;
-  font-weight: 600;
-}
-
-.card p {
-  font-size: 14px;
-  margin-bottom: 4px;
-}
-
-.card span {
-  font-size: 12px;
-  color: #888;
-}
-
-/* Popular Card */
-.special {
-  border: 2px solid #0A97EF;
-  background: linear-gradient(135deg, #e3f2fd 0%, #ffffff 100%);
 }
 
 .tag {
   position: absolute;
-  top: -12px;
-  left: 50%;
-  transform: translateX(-50%);
+  top: -8px;
+  right: 10px;
   background: linear-gradient(135deg, #2196f3 0%, #0A97EF 100%);
   color: white;
-  padding: 6px 14px;
-  font-size: 12px;
-  border-radius: 20px;
-  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
   box-shadow: 0 2px 8px rgba(10, 151, 239, 0.4);
 }
 
-/* =============================
-   INPUT FIELD
-============================= */
+.card.selected {
+  border: 2px solid #0A97EF;
+  background: #FEF2E1;
+  box-shadow: 0 5px 16px rgba(10, 151, 239, 0.2);
+}
+
+.card h3 {
+  color: #0A97EF;
+  font-size: 20px;
+  margin-bottom: 3px;
+  font-weight: 600;
+}
+
+.card p {
+  font-size: 13px;
+  color: #555;
+  margin: 3px 0;
+  line-height: 1.3;
+}
+
+.card span {
+  font-size: 11px;
+  color: #888;
+}
+
 
 .input-box {
   width: 100%;
-  padding: 14px;
-  border-radius: 30px;
+  padding: 12px;
+  border-radius: 25px;
   border: 2px solid #e0e0e0;
-  margin-bottom: 15px;
-  font-size: 14px;
+  margin-bottom: 12px;
+  font-size: 13px;
   transition: all 0.3s ease;
   background: #fafafa;
 }
@@ -190,31 +177,20 @@
   box-shadow: 0 0 0 3px rgba(10, 151, 239, 0.1);
 }
 
-/* Meal Info */
-.meal-info {
-  font-size: 14px;
-  color: #0A97EF;
-  margin-bottom: 18px;
-  font-weight: 500;
-}
-
-/* =============================
-   DONATE BUTTON
-============================= */
 
 .big-btn {
   width: 100%;
-  padding: 16px;
-  border-radius: 40px;
+  padding: 13px;
+  border-radius: 35px;
   background: linear-gradient(135deg, #2196f3 0%, #0A97EF 100%);
   border: none;
   font-weight: 600;
-  margin-bottom: 15px;
+  margin-bottom: 12px;
   color: white;
-  font-size: 16px;
+  font-size: 15px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 6px 20px rgba(10, 151, 239, 0.3);
+  box-shadow: 0 5px 16px rgba(10, 151, 239, 0.25);
 }
 
 .big-btn:hover {
@@ -229,16 +205,44 @@
   box-shadow: none;
 }
 
-/* Small Footer Info */
 .small-info {
-  font-size: 13px;
-  color: #777;
-  line-height: 1.4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 12px;
+  font-size: 12px;
+  color: #666;
+  flex-wrap: wrap;
 }
 
-/* =============================
-   MODAL OVERLAY & CONTAINER
-============================= */
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.info-icon-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #0A97EF;
+  flex-shrink: 0;
+}
+
+.info-icon {
+  color: white;
+  stroke-width: 2.5;
+}
+
+.info-separator {
+  color: #0A97EF;
+  font-weight: bold;
+  margin: 0 2px;
+}
 
 .modal-overlay {
   position: fixed;
@@ -258,31 +262,6 @@
   to { opacity: 1; }
 }
 
-/* Modal Card */
-.modal {
-  background: white;
-  width: 100%;
-  max-width: 440px;
-  border-radius: 20px;
-  padding: 28px 24px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-  position: relative;
-  animation: modalSlide 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  box-sizing: border-box;
-}
-
-@keyframes modalSlide {
-  from {
-    transform: scale(0.9) translateY(30px);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1) translateY(0);
-    opacity: 1;
-  }
-}
-
-/* Close Button */
 .close-btn {
   position: absolute;
   top: 15px;
@@ -308,24 +287,6 @@
   transform: rotate(90deg);
 }
 
-/* Modal Header */
-.modal h3 {
-  text-align: center;
-  font-size: 22px;
-  color: #0A97EF;
-  margin-bottom: 8px;
-  font-weight: 700;
-}
-
-.modal-subtitle {
-  text-align: center;
-  font-size: 13px;
-  color: #666;
-  margin-bottom: 24px;
-  font-style: italic;
-}
-
-/* Form Grid */
 .form-grid {
   display: flex;
   flex-direction: column;
@@ -333,72 +294,25 @@
   margin-bottom: 20px;
 }
 
-/* Form Fields */
-.form-field {
-  width: 100%;
-  padding: 12px 14px;
-  border-radius: 12px;
-  border: 1.5px solid #e0e0e0;
-  background: #fafafa;
-  font-size: 14px;
-  transition: all 0.3s ease;
-  font-family: 'Poppins', sans-serif;
-  box-sizing: border-box;
-}
-
-.form-field:focus {
-  outline: none;
-  border-color: #0A97EF;
-  background: white;
-  box-shadow: 0 0 0 3px rgba(10, 151, 239, 0.1);
-}
-
-.form-field::placeholder {
-  color: #999;
-}
-
-/* Date Row */
 .date-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
 }
 
-/* Amount Display Box */
-.amount-display-box {
-  background: linear-gradient(135deg, #e3f2fd 0%, #f0f7fb 100%);
-  padding: 16px;
-  border-radius: 14px;
-  border: 2px solid #0A97EF;
-  text-align: center;
-  margin: 8px 0;
-  box-sizing: border-box;
+.date-field-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
-.amount-label {
-  font-size: 12px;
-  color: #666;
-  margin-bottom: 6px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  font-weight: 500;
-}
-
-.amount-value {
-  font-size: 28px;
-  font-weight: 700;
-  color: #0A97EF;
-  margin-bottom: 8px;
-}
-
-.meal-message {
+.date-label {
   font-size: 13px;
   color: #555;
   font-weight: 500;
-  margin: 0;
+  margin-left: 4px;
 }
 
-/* Checkbox Rows */
 .checkbox-row {
   display: flex;
   align-items: flex-start;
@@ -422,13 +336,6 @@
   flex: 1;
 }
 
-/* Modal Button */
-.modal-btn {
-  margin-top: 8px;
-  font-size: 15px;
-}
-
-/* Footer Info */
 .modal-footer-info {
   text-align: center;
   font-size: 12px;
@@ -438,22 +345,3 @@
   border-top: 1px solid #f0f0f0;
 }
 
-/* Mobile Responsive */
-@media (max-width: 768px) {
-  .modal {
-    padding: 24px 20px;
-    max-width: 95%;
-  }
-
-  .modal h3 {
-    font-size: 20px;
-  }
-
-  .date-row {
-    grid-template-columns: 1fr;
-  }
-
-  .amount-value {
-    font-size: 24px;
-  }
-}

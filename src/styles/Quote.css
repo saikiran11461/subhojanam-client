@@ -1,117 +1,105 @@
 .quote-section {
-  background: linear-gradient(135deg, #e8f4f8 0%, #dce6ee 100%);
-  padding: 100px 20px;
+  /* border: 2px solid blue; */
+  background: linear-gradient(135deg, #eef6fb 0%, #dde7f0 100%);
+  padding: 80px 20px;
   display: flex;
   justify-content: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.quote-section::before {
-  content: '';
-  position: absolute;
-  bottom: -30%;
-  left: -20%;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(10, 151, 239, 0.06) 0%, transparent 70%);
-  border-radius: 50%;
 }
 
 .quote-box {
-  max-width: 1100px;
+  /* border: 2px solid red; */
+  max-width: 1300px;
   width: 100%;
   display: flex;
   align-items: center;
-  gap: 80px;
-  position: relative;
-  z-index: 1;
+  align-content: center;
+  gap: 0px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  border-radius: 30px;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
+  padding: 40px 40px!important;
 }
 
-/* Left Image */
+
+.left {
+  flex: 0 0 45%;   
+  display: flex;
+  justify-content: center;
+}
+
 .left img {
-  width: 380px;
-  border-radius: 30px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
-  transition: all 0.4s ease;
-  border: 5px solid white;
+  width: 100%;
+  max-width: 420px;
+  border-radius: 24px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
 }
 
 .left img:hover {
-  transform: scale(1.03) rotate(-2deg);
-  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.3);
+  transform: scale(1.02);
 }
 
-/* Right Content */
 .right {
   flex: 1;
+  position: relative;
+  text-align: center;
 }
 
 .quote-mark {
-  font-size: 70px;
-  color: #9ec3db;
-  margin-bottom: 15px;
+  font-size: 80px;
+  color: rgba(10, 151, 239, 0.15);
+  font-family: Georgia, serif;
   line-height: 1;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 0px;
 }
 
 .quote-text {
-  font-size: 24px;
+  font-size: 32px !important;
   font-style: italic;
-  margin-bottom: 30px;
-  color: #333;
-  line-height: 1.6;
-  font-weight: 500;
+  color: #1a1a1a;
+  line-height: 1.4 !important;
+  margin-bottom: 35px;
+  font-weight: 700;
   position: relative;
-  padding-left: 25px;
+  z-index: 2;
+  letter-spacing: 0.3px;
+  text-align: center;
 }
 
-.quote-text::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 4px;
-  background: linear-gradient(180deg, #0A97EF 0%, #2196f3 100%);
-  border-radius: 2px;
+.author-section {
+  text-align: center;
+  margin-top: 40px;
 }
 
 .right h3 {
   color: #0A97EF;
-  margin-bottom: 8px;
-  font-size: 22px;
+  font-size: 28px;
+  margin-bottom: 12px;
   font-weight: 700;
 }
 
-.right span {
+.author-title {
   color: #666;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 500;
+  line-height: 1.5;
+  display: block;
 }
 
 @media (max-width: 968px) {
   .quote-box {
     flex-direction: column;
-    gap: 40px;
+    padding: 40px;
     text-align: center;
   }
-  
-  .left img {
-    width: 100%;
-    max-width: 400px;
-  }
-  
-  .quote-text {
-    font-size: 20px;
-    padding-left: 0;
-  }
-  
-  .quote-text::before {
+
+  .quote-mark {
     display: none;
   }
-  
-  .quote-mark {
-    font-size: 60px;
+
+  .author-section {
+    border-left: none;
+    padding-left: 0;
   }
 }
