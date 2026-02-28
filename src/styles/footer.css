@@ -19,7 +19,7 @@ footer {
     gap: 3rem;
   }
 }
-
+/* Brand & Address */
 .footer-brand h3 {
   font-size: 1.25rem;
   font-weight: 700;
@@ -50,7 +50,7 @@ footer {
   margin-top: 2px;
   color: #ffffff;
 }
-
+/* Quick Links */
 .footer-links h4,
 .footer-social h4 {
   font-size: 1.1rem;
@@ -74,7 +74,7 @@ footer {
 .footer-links a:hover {
   color: #ffffff;
 }
-
+/* Social Icons */
 .footer-social-icons {
   display: flex;
   gap: 0.75rem;
@@ -100,7 +100,7 @@ footer {
   background-color: rgba(255, 255, 255, 0.95);
   color: #0A97EF;
 }
-
+/* Donate Button */
 .footer-donate-btn {
   display: inline-block;
   background-color: #ffffff;
@@ -121,7 +121,7 @@ footer {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
-
+/* Bottom Bar */
 .footer-bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   margin-top: 2.5rem;

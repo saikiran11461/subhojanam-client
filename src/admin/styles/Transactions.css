@@ -305,6 +305,7 @@
   border-color: #0A97EF;
 }
 
+/* Status Badge Styles with Color Coding */
 .status-badge {
   padding: 6px 14px;
   border-radius: 20px;
@@ -405,5 +406,242 @@
     width: 35px;
     height: 35px;
     font-size: 13px;
+  }
+}
+
+/* Certificate Column */
+.certificate-cell {
+  text-align: center;
+}
+
+.certificate-yes {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background: #dcfce7;
+  border-radius: 50%;
+}
+
+.certificate-no {
+  color: #999;
+  font-size: 18px;
+}
+
+/* Transaction Details Modal */
+.transaction-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+}
+
+.transaction-modal {
+  background: #ffffff;
+  border-radius: 16px;
+  max-width: 750px;
+  width: 90%;
+  max-height: 88vh;
+  overflow-y: auto;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.25);
+  animation: slideUp 0.3s ease;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 26px 30px;
+  background: linear-gradient(135deg, #0A97EF 0%, #0575c9 100%);
+  border-radius: 16px 16px 0 0;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.modal-header h2 {
+  font-size: 22px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+}
+
+.modal-close-btn {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  color: #ffffff;
+  transition: all 0.2s;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  width: 34px;
+  height: 34px;
+}
+
+.modal-close-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.modal-body {
+  padding: 30px;
+  background: #fafbfc;
+}
+
+.detail-section {
+  background: #ffffff;
+  margin-bottom: 20px;
+  padding: 22px 24px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e8eaed;
+}
+
+.detail-section:last-child {
+  margin-bottom: 0;
+}
+
+.detail-section h3 {
+  font-size: 17px;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 18px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e8eaed;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.certificate-section {
+  background: linear-gradient(to bottom, #f0f8ff, #ffffff);
+  border: 1px solid #b3d9ff;
+}
+
+.certificate-section h3 {
+  color: #0A97EF;
+  border-bottom: 2px solid #b3d9ff;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  row-gap: 18px;
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px 14px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  border-left: 3px solid #e0e0e0;
+  transition: all 0.2s;
+}
+
+.detail-item:hover {
+  background: #f0f2f5;
+  border-left-color: #0A97EF;
+}
+
+.certificate-section .detail-item {
+  background: #ffffff;
+  border-left-color: #0A97EF;
+}
+
+.certificate-section .detail-item:hover {
+  background: #f8fcff;
+}
+
+.detail-item.full-width {
+  grid-column: 1 / -1;
+}
+
+.detail-label {
+  font-size: 12px;
+  color: #718096;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  margin-bottom: 2px;
+}
+
+.detail-value {
+  font-size: 15px;
+  color: #2d3748;
+  font-weight: 600;
+  word-break: break-word;
+  line-height: 1.4;
+}
+
+.detail-item .status-badge {
+  align-self: flex-start;
+  margin-top: 2px;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 768px) {
+  .transaction-modal {
+    width: 95%;
+    max-height: 92vh;
+    border-radius: 14px;
+  }
+
+  .modal-header {
+    padding: 20px 24px;
+    border-radius: 14px 14px 0 0;
+  }
+
+  .modal-header h2 {
+    font-size: 19px;
+  }
+
+  .modal-body {
+    padding: 22px;
+  }
+
+  .detail-section {
+    margin-bottom: 16px;
+    padding: 18px 20px;
+  }
+
+  .detail-section h3 {
+    font-size: 16px;
+    margin-bottom: 14px;
+  }
+
+  .detail-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .detail-item {
+    padding: 10px 12px;
+  }
+
+  .detail-value {
+    font-size: 14px;
   }
 }

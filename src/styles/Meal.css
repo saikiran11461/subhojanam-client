@@ -1,5 +1,5 @@
 .meal-section {
-  background: linear-gradient(180deg, #f8f6f3 0%, #f3f1ee 100%);
+  background: #FEF2E1;
   text-align: center;
   padding: 100px 20px;
   position: relative;
@@ -34,8 +34,9 @@
   z-index: 1;
 }
 
+/* Beige container */
 .meal-box {
-  background: linear-gradient(135deg, #f0ebe3 0%, #e9e4dc 100%);
+  background: #FEF2E1;
   padding: 60px 40px;
   border-radius: 30px;
   max-width: 1000px;
@@ -60,6 +61,7 @@
   transform: scale(1.03) rotate(1deg);
 }
 
+/* Cards below image */
 .meal-items {
   display: flex;
   justify-content: center;

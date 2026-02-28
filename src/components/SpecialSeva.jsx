@@ -1,6 +1,13 @@
 import "../styles/special.css"
 
 function SpecialSeva() {
+  const scrollToDonation = () => {
+    const donationSection = document.querySelector('.main-section')
+    if (donationSection) {
+      donationSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  }
+
   return (
     <section className="special-section">
 
@@ -15,11 +22,11 @@ function SpecialSeva() {
       </p>
 
       <div className="special-buttons">
-        <button className="outline-btn">
+        <button className="outline-btn" onClick={scrollToDonation}>
          Sponsor for Birthday 
         </button>
 
-        <button className="outline-btn">
+        <button className="outline-btn" onClick={scrollToDonation}>
           Sponsor Anniversary Seva
         </button>
       </div>

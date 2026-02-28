@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { Search, Download, Filter, Calendar } from "lucide-react"
+import { Search, Download, Filter, Calendar, X, Check } from "lucide-react"
 import adminAPI from "../../services/adminApi"
 import "../styles/Transactions.css"
 
@@ -12,6 +12,8 @@ function Transactions() {
   const [currentPage, setCurrentPage] = useState(1)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
+  const [selectedTransaction, setSelectedTransaction] = useState(null)
+  const [showModal, setShowModal] = useState(false)
 
   useEffect(() => {
     fetchTransactions()
@@ -112,6 +114,16 @@ function Transactions() {
     })
   }
 
+  const handleViewDetails = (txn) => {
+    setSelectedTransaction(txn)
+    setShowModal(true)
+  }
+
+  const closeModal = () => {
+    setShowModal(false)
+    setSelectedTransaction(null)
+  }
+
   return (
     <div className="transactions-page">
       <div className="page-header">
@@ -199,6 +211,7 @@ function Transactions() {
                     <th>Donor Details</th>
                     <th>Contact</th>
                     <th>Amount</th>
+                    <th>80G Certificate</th>
                     <th>Date & Time</th>
                     <th>Status</th>
                     <th>Actions</th>
@@ -216,6 +229,15 @@ function Transactions() {
                       </td>
                       <td className="mobile">{txn.mobile}</td>
                       <td className="amount">₹{txn.amount.toLocaleString()}</td>
+                      <td className="certificate-cell">
+                        {txn.certificate ? (
+                          <span className="certificate-yes">
+                            <Check size={18} color="#22c55e" />
+                          </span>
+                        ) : (
+                          <span className="certificate-no">-</span>
+                        )}
+                      </td>
                       <td className="date">{formatDate(txn.date)}</td>
                       <td>
                         <span className={`status-badge ${txn.status.toLowerCase()}`}>
@@ -223,7 +245,7 @@ function Transactions() {
                         </span>
                       </td>
                       <td>
-                        <button className="action-btn view-btn">View</button>
+                        <button className="action-btn view-btn" onClick={() => handleViewDetails(txn)}>View</button>
                       </td>
                     </tr>
                   ))}
@@ -265,6 +287,115 @@ function Transactions() {
             </div>
           )}
         </>
+      )}
+
+      {showModal && selectedTransaction && (
+        <div className="transaction-modal-overlay" onClick={closeModal}>
+          <div className="transaction-modal" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header">
+              <h2>Transaction Details</h2>
+              <button className="modal-close-btn" onClick={closeModal}>
+                <X size={24} />
+              </button>
+            </div>
+
+            <div className="modal-body">
+              <div className="detail-section">
+                <h3>Transaction Information</h3>
+                <div className="detail-grid">
+                  <div className="detail-item">
+                    <span className="detail-label">Transaction ID:</span>
+                    <span className="detail-value">{selectedTransaction.id}</span>
+                  </div>
+                  <div className="detail-item">
+                    <span className="detail-label">Amount:</span>
+                    <span className="detail-value">₹{selectedTransaction.amount.toLocaleString()}</span>
+                  </div>
+                  <div className="detail-item">
+                    <span className="detail-label">Date & Time:</span>
+                    <span className="detail-value">{formatDate(selectedTransaction.date)}</span>
+                  </div>
+                  <div className="detail-item">
+                    <span className="detail-label">Status:</span>
+                    <span className={`status-badge ${selectedTransaction.status.toLowerCase()}`}>
+                      {selectedTransaction.status}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="detail-section">
+                <h3>Donor Information</h3>
+                <div className="detail-grid">
+                  <div className="detail-item">
+                    <span className="detail-label">Name:</span>
+                    <span className="detail-value">{selectedTransaction.name}</span>
+                  </div>
+                  <div className="detail-item">
+                    <span className="detail-label">Email:</span>
+                    <span className="detail-value">{selectedTransaction.email}</span>
+                  </div>
+                  <div className="detail-item">
+                    <span className="detail-label">Mobile:</span>
+                    <span className="detail-value">{selectedTransaction.mobile}</span>
+                  </div>
+                  {selectedTransaction.occasion && (
+                    <div className="detail-item">
+                      <span className="detail-label">Occasion:</span>
+                      <span className="detail-value">{selectedTransaction.occasion}</span>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {selectedTransaction.certificate && (
+                <div className="detail-section certificate-section">
+                  <h3>80G Certificate Details</h3>
+                  <div className="detail-grid">
+                    <div className="detail-item">
+                      <span className="detail-label">PAN Number:</span>
+                      <span className="detail-value">{selectedTransaction.panNumber || 'N/A'}</span>
+                    </div>
+                    <div className="detail-item full-width">
+                      <span className="detail-label">Address:</span>
+                      <span className="detail-value">{selectedTransaction.address || 'N/A'}</span>
+                    </div>
+                    <div className="detail-item">
+                      <span className="detail-label">City:</span>
+                      <span className="detail-value">{selectedTransaction.city || 'N/A'}</span>
+                    </div>
+                    <div className="detail-item">
+                      <span className="detail-label">State:</span>
+                      <span className="detail-value">{selectedTransaction.state || 'N/A'}</span>
+                    </div>
+                    <div className="detail-item">
+                      <span className="detail-label">Pincode:</span>
+                      <span className="detail-value">{selectedTransaction.pincode || 'N/A'}</span>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {selectedTransaction.isRecurring && (
+                <div className="detail-section">
+                  <h3>Subscription Information</h3>
+                  <div className="detail-grid">
+                    <div className="detail-item">
+                      <span className="detail-label">Type:</span>
+                      <span className="detail-value">Monthly Recurring</span>
+                    </div>
+                    {selectedTransaction.subscriptionId && (
+                      <div className="detail-item">
+                        <span className="detail-label">Subscription ID:</span>
+                        <span className="detail-value">{selectedTransaction.subscriptionId}</span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
       )}
     </div>
   )

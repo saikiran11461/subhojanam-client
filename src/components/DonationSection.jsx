@@ -10,6 +10,7 @@ function DonationSection() {
   const [customAmount, setCustomAmount] = useState("");
   const [showForm, setShowForm] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const [formData, setFormData] = useState({
     name: "",
@@ -19,7 +20,11 @@ function DonationSection() {
     sevaDate: "",
     dob: "",
     certificate: false,
-    prasadam: false,
+    panNumber: "",
+    address: "",
+    city: "",
+    state: "",
+    pincode: "",
     updates: true
   });
 
@@ -44,6 +49,12 @@ function DonationSection() {
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
+    
+    // Clear error border when user starts typing
+    if (e.target.style.border) {
+      e.target.style.border = '';
+    }
+    
     setFormData({
       ...formData,
       [name]: type === "checkbox" ? checked : value
@@ -60,14 +71,89 @@ function DonationSection() {
   const meals = finalAmount ? Math.floor(finalAmount / 25) : 0;
 
   const handlePayment = async () => {
+    setErrorMessage("");
+    
+    // Remove all previous error indicators
+    document.querySelectorAll('.form-field').forEach(field => {
+      field.style.border = '';
+    });
 
     if (!formData.name || !formData.email || !formData.mobile) {
-      alert("Please fill all required fields");
+      setErrorMessage("Please fill all required fields (Name, Email, Mobile)");
+      
+      // Highlight empty fields
+      if (!formData.name) {
+        const field = document.querySelector('input[name="name"]');
+        if (field) {
+          field.style.border = '2px solid #ff4444';
+          field.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          field.focus();
+        }
+      } else if (!formData.email) {
+        const field = document.querySelector('input[name="email"]');
+        if (field) {
+          field.style.border = '2px solid #ff4444';
+          field.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          field.focus();
+        }
+      } else if (!formData.mobile) {
+        const field = document.querySelector('input[name="mobile"]');
+        if (field) {
+          field.style.border = '2px solid #ff4444';
+          field.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          field.focus();
+        }
+      }
       return;
     }
 
+    if (formData.certificate) {
+      if (!formData.panNumber || !formData.address || !formData.city || !formData.state || !formData.pincode) {
+        setErrorMessage("Please fill all certificate details (PAN Number, Address, City, State, Pincode) to receive 80G Certificate");
+        
+        // Highlight empty certificate fields
+        if (!formData.panNumber) {
+          const field = document.querySelector('input[name="panNumber"]');
+          if (field) {
+            field.style.border = '2px solid #ff4444';
+            field.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            field.focus();
+          }
+        } else if (!formData.address) {
+          const field = document.querySelector('input[name="address"]');
+          if (field) {
+            field.style.border = '2px solid #ff4444';
+            field.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            field.focus();
+          }
+        } else if (!formData.city) {
+          const field = document.querySelector('input[name="city"]');
+          if (field) {
+            field.style.border = '2px solid #ff4444';
+            field.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            field.focus();
+          }
+        } else if (!formData.state) {
+          const field = document.querySelector('input[name="state"]');
+          if (field) {
+            field.style.border = '2px solid #ff4444';
+            field.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            field.focus();
+          }
+        } else if (!formData.pincode) {
+          const field = document.querySelector('input[name="pincode"]');
+          if (field) {
+            field.style.border = '2px solid #ff4444';
+            field.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            field.focus();
+          }
+        }
+        return;
+      }
+    }
+
     if (!finalAmount || finalAmount <= 0) {
-      alert("Invalid donation amount");
+      setErrorMessage("Invalid donation amount");
       return;
     }
 
@@ -80,7 +166,7 @@ function DonationSection() {
           : "create-subscription";
 
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/payment/${endpoint}`,
+        `http://localhost:2345/api/payment/${endpoint}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -91,10 +177,10 @@ function DonationSection() {
         }
       );
 
-      const data = await response.json();
+const data = await response.json();
 
-      console.log("Response status:", response.status);
-      console.log("Response data:", data);
+console.log("Response status:", response.status);
+console.log("Response data:", data);
 
       if (!data.key) {
         alert("Payment initialization failed");
@@ -155,10 +241,10 @@ function DonationSection() {
       setLoading(false);
 
     } catch (error) {
-      console.error("Frontend Error:", error);
-      alert("Payment failed. Please try again.");
-      setLoading(false);
-    }
+  console.error("Frontend Error:", error);
+  alert("Payment failed. Check console.");
+  setLoading(false);
+}
   };
 
   return (
@@ -262,7 +348,6 @@ function DonationSection() {
             <button className="close-btn" onClick={() => setShowForm(false)}>✕</button>
 
             <h3>Complete Your Seva</h3>
-            <p className="modal-subtitle">Your contribution will feed the hungry today.</p>
 
             <div className="form-grid">
 
@@ -279,39 +364,69 @@ function DonationSection() {
               </select>
 
               <div className="date-row">
-                <div className="date-field-wrapper">
-                  <label className="date-label">Seva Date</label>
-                  <input type="date" name="sevaDate" className="form-field" onChange={handleChange} />
-                </div>
-                <div className="date-field-wrapper">
-                  <label className="date-label">Date of Birth</label>
-                  <input type="date" name="dob" className="form-field" onChange={handleChange} />
-                </div>
+                <input type="date" name="sevaDate" className="form-field" onChange={handleChange} />
+                <input type="date" name="dob" className="form-field" onChange={handleChange} />
               </div>
 
-              <div className="amount-field-wrapper">
-                <label className="amount-label">Donation Amount (₹)</label>
-                <input 
-                  type="text" 
-                  className="form-field amount-input" 
-                  value={`₹${finalAmount.toLocaleString()}`}
-                  readOnly
-                />
+              <div className="amount-display-box">
+                <div className="amount-label">Donation Amount</div>
+                <div className="amount-value">₹{finalAmount.toLocaleString()}</div>
+                <div className="meal-message">
+                  ❤️ Your donation will feed {meals} caregivers today
+                </div>
               </div>
-
-              <p className="donation-message">
-                ❤️ Your donation will feed {meals} caregivers today
-              </p>
 
               <label className="checkbox-row">
                 <input type="checkbox" name="certificate" onChange={handleChange} />
                 <span>I would like to receive 80(G) Certificate</span>
               </label>
 
-              <label className="checkbox-row">
-                <input type="checkbox" name="prasadam" onChange={handleChange} />
-                <span>I would like to receive Maha Prasadam</span>
-              </label>
+              {formData.certificate && (
+                <div className="certificate-fields">
+                  <input 
+                    type="text" 
+                    name="panNumber" 
+                    placeholder="PAN Number *" 
+                    className="form-field" 
+                    onChange={handleChange} 
+                    value={formData.panNumber}
+                  />
+                  <input 
+                    type="text" 
+                    name="address" 
+                    placeholder="Full Address *" 
+                    className="form-field" 
+                    onChange={handleChange} 
+                    value={formData.address}
+                  />
+                  <div className="address-row">
+                    <input 
+                      type="text" 
+                      name="city" 
+                      placeholder="City *" 
+                      className="form-field" 
+                      onChange={handleChange} 
+                      value={formData.city}
+                    />
+                    <input 
+                      type="text" 
+                      name="state" 
+                      placeholder="State *" 
+                      className="form-field" 
+                      onChange={handleChange} 
+                      value={formData.state}
+                    />
+                  </div>
+                  <input 
+                    type="text" 
+                    name="pincode" 
+                    placeholder="Pincode *" 
+                    className="form-field" 
+                    onChange={handleChange} 
+                    value={formData.pincode}
+                  />
+                </div>
+              )}
 
               <label className="checkbox-row">
                 <input type="checkbox" name="updates" defaultChecked onChange={handleChange} />
@@ -320,6 +435,21 @@ function DonationSection() {
 
             </div>
 
+            {errorMessage && (
+              <div style={{
+                backgroundColor: '#fee',
+                color: '#c33',
+                padding: '12px 16px',
+                borderRadius: '8px',
+                marginBottom: '16px',
+                fontSize: '14px',
+                fontWeight: '500',
+                border: '1px solid #fcc'
+              }}>
+                {errorMessage}
+              </div>
+            )}
+
             <button
               className="big-btn modal-btn"
               onClick={handlePayment}
@@ -327,10 +457,6 @@ function DonationSection() {
             >
               {loading ? "Processing..." : `Proceed to Pay ₹${finalAmount.toLocaleString()} 🔒`}
             </button>
-
-            <div className="modal-footer-text">
-              100% Secure Payment | 80G Tax Exempt
-            </div>
 
           </div>
         </div>

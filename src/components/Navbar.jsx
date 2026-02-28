@@ -2,6 +2,13 @@ import "../styles/navbar.css"
 import logo from "../assets/logo.png"
 
 function Navbar() {
+  const scrollToDonation = () => {
+    const donationSection = document.querySelector('.main-section')
+    if (donationSection) {
+      donationSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  }
+
   return (
      <header className="navbar">
       <div className="navbar__container">
@@ -11,11 +18,11 @@ function Navbar() {
         </div>
 
         <div className="navbar__buttons">
-          <button className="donate-btn">
+          <button className="donate-btn" onClick={scrollToDonation}>
              Donate Now
           </button>
 
-          <button className="exempt-btn">
+          <button className="exempt-btn" onClick={scrollToDonation}>
              80G Exempt
           </button>
         </div>

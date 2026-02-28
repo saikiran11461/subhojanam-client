@@ -4,6 +4,13 @@ import img2 from "../assets/img2.png"
 import img3 from "../assets/img3.png"
 
 function Moments() {
+  const scrollToDonation = () => {
+    const donationSection = document.querySelector('.main-section')
+    if (donationSection) {
+      donationSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  }
+
   return (
     <section className="moments">
 
@@ -24,7 +31,7 @@ function Moments() {
         </div>
       </div>
 
-      <button className="meal-btn">
+      <button className="meal-btn" onClick={scrollToDonation}>
         Sponsor a Meal Like This (₹500) →
       </button>
 

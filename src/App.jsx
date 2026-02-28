@@ -55,6 +55,7 @@ function Home() {
       <MealSection />
       <AboutSection />
       <HospitalsSection />
+      {/* <TrustSection /> */}
       <StoriesSection />
       <FeaturedOn />
       <Final />

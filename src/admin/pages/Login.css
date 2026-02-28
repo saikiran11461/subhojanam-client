@@ -188,6 +188,7 @@
   color: #9ca3af;
 }
 
+/* Animations */
 @keyframes slideUp {
   from {
     opacity: 0;
@@ -220,6 +221,7 @@
   to { transform: rotate(360deg); }
 }
 
+/* Responsive Design */
 @media (max-width: 480px) {
   .login-box {
     padding: 40px 30px;

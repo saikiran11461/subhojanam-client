@@ -2,6 +2,13 @@ import "../styles/Meal.css"
 import mealImg from "../assets/meal.png"
 
 function MealSection() {
+  const scrollToDonation = () => {
+    const donationSection = document.querySelector('.main-section')
+    if (donationSection) {
+      donationSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  }
+
   return (
     <section className="meal-section">
 
@@ -48,7 +55,7 @@ function MealSection() {
           ₹25 feeds one caregiver. Your kindness becomes nourishment.
         </p>
 
-        <button className="meal-btn">
+        <button className="meal-btn" onClick={scrollToDonation}>
           Feed Someone Today ❤️
         </button>
 

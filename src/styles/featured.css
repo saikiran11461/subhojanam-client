@@ -1,4 +1,5 @@
 .featured-section {
+/* border: 2px solid red; */
   background: #f4f6f8;
   padding: 80px 20px;
   text-align: center;
@@ -35,16 +36,19 @@
   height: 60px;             
   width: 25%;               
   object-fit: contain;
+  /* filter: grayscale(100%); */
   opacity: 0.8;
   transition: 0.3s ease;
 }
 
+/* Hover effect */
 .featured-logos img:hover {
   filter: grayscale(0%);
   opacity: 1;
   transform: scale(1.05);
 }
 
+/* Responsive */
 @media (max-width: 992px) {
   .featured-logos {
     flex-wrap: wrap;
