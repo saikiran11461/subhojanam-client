@@ -1,4 +1,4 @@
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://subhojanam-server-882278565284.europe-west1.run.app';
 
 class AdminAPI {
   async request(endpoint, options = {}) {
