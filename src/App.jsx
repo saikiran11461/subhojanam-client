@@ -28,6 +28,7 @@ import Analytics from "./admin/pages/Analytics.jsx"
 import Settings from "./admin/pages/Settings.jsx"
 import HospitalsSection from "./components/HospitalsSection.jsx"
 import FeaturedOn from "./components/FeaturedOn.jsx"
+import WhySwasthya from "./components/WhySwasthya.jsx"
 
 function ProtectedRoute({ children }) {
   const token = localStorage.getItem("adminToken")
@@ -51,6 +52,7 @@ function Home() {
       <QuoteSection />
       <Impact />
       <Working />
+      <WhySwasthya/>
       <VideoSection />
       <MealSection />
       <AboutSection />

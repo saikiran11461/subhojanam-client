@@ -13,13 +13,17 @@ function Final() {
 
       <h2>Someone is Waiting for You</h2>
 
-      <p className="cta-sub">
-        Hunger doesn't wait for tomorrow. Your ₹500 can save a family
-        from despair right now.
-      </p>
+      <div className="cta-content">
+        <p className="cta-highlight">
+          Hunger doesn't wait for tomorrow.
+        </p>
+        <p className="cta-text">
+          Your ₹500 can save a family from despair right now. Every meal you provide brings hope, strength, and dignity to those waiting by hospital bedsides.
+        </p>
+      </div>
 
       <p className="cta-quote">
-        “The gift of food is the highest charity.” — Mahabharata
+        "The gift of food is the highest charity." — Mahabharata
       </p>
 
       <button className="cta-btn" onClick={scrollToDonation}>

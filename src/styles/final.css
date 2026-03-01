@@ -1,6 +1,6 @@
 .final-cta {
   background: linear-gradient(135deg, #0A97EF 0%, #2196f3 50%, #42a5f5 100%);
-  padding: 120px 20px;
+  padding: 30px 20px;
   text-align: center;
   color: white;
   position: relative;
@@ -31,12 +31,38 @@
 
 .final-cta h2 {
   font-size: 46px;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
   font-weight: 700;
   position: relative;
   z-index: 1;
   text-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   animation: fadeInDown 0.8s ease;
+}
+
+.cta-content {
+  max-width: 800px;
+  margin: 0 auto 35px;
+  position: relative;
+  z-index: 1;
+}
+
+.cta-highlight {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  line-height: 1.4;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 12px 25px;
+  border-radius: 10px;
+  display: inline-block;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+.cta-text {
+  font-size: 18px;
+  line-height: 1.7;
+  opacity: 0.95;
+  margin-top: 15px;
 }
 
 .cta-sub {
@@ -51,7 +77,7 @@
 
 .cta-quote {
   font-style: italic;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
   opacity: 0.9;
   font-size: 17px;
   position: relative;
@@ -106,6 +132,16 @@
 
   .final-cta h2 {
     font-size: 32px;
+    margin-bottom: 20px;
+  }
+
+  .cta-highlight {
+    font-size: 20px;
+    padding: 10px 20px;
+  }
+
+  .cta-text {
+    font-size: 16px;
   }
   
   .cta-sub {

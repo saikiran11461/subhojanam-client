@@ -21,6 +21,10 @@ function Navbar() {
           <button className="donate-btn" onClick={scrollToDonation}>
              Donate Now
           </button>
+
+          <button className="exempt-btn" onClick={scrollToDonation}>
+             80G Exempt
+          </button>
         </div>
 
       </div>

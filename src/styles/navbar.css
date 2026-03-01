@@ -105,5 +105,9 @@
     padding: 8px 20px;
     font-size: 13px;
   }
+
+  .exempt-btn {
+    display: none;
+  }
 }
 

@@ -1,4 +1,7 @@
 import "../styles/stories.css"
+import savitriAmmaImg from "../assets/savitriamma.png"
+import rajeshImg from "../assets/rajesh.png"
+import gouriImg from "../assets/gouri.png"
 
 function StoriesSection() {
   return (
@@ -26,7 +29,9 @@ function StoriesSection() {
           </p>
 
           <div className="story-user">
-            <div className="avatar">S</div>
+            <div className="avatar">
+              <img src={savitriAmmaImg} alt="Savitri Amma" />
+            </div>
             <div>
               <strong>Savitri Amma</strong>
               <p>Caregiver, Victoria Hospital</p>
@@ -49,7 +54,9 @@ function StoriesSection() {
           </p>
 
           <div className="story-user">
-            <div className="avatar">R</div>
+            <div className="avatar">
+              <img src={rajeshImg} alt="Rajesh" />
+            </div>
             <div>
               <strong>Rajesh</strong>
               <p>Father, Indira Gandhi Child Health</p>
@@ -72,7 +79,9 @@ function StoriesSection() {
           </p>
 
           <div className="story-user">
-            <div className="avatar">G</div>
+            <div className="avatar">
+              <img src={gouriImg} alt="Gouri" />
+            </div>
             <div>
               <strong>Gouri</strong>
               <p>Caregiver, Bowring Hospital</p>
