@@ -40,7 +40,7 @@
   overflow: hidden;
   width: 100%;
   max-width: 100%;
-  margin-bottom: 60px;
+  margin-bottom: 30px;
   position: relative;
   z-index: 1;
   min-height: 300px;
@@ -55,6 +55,7 @@
 }
 
 .slide-track img {
+
   height: 280px;
   width: auto;
   object-fit: cover;
@@ -81,8 +82,8 @@
 }
 
 .meal-btn {
-  background: white;
-  color: #0A97EF;
+  background: #FEF2E1!important;  
+  color: #0A97EF!important;
   border: none;
   padding: 18px 45px;
   border-radius: 40px;
@@ -95,7 +96,6 @@
   z-index: 1;
   overflow: hidden;
 }
-
 .meal-btn::before {
   content: '';
   position: absolute;
@@ -122,11 +122,26 @@
 }
 
 @media (max-width: 768px) {
+  .moments {
+    padding: 40px 20px;
+  }
+    .slider {
+    margin-bottom: 25px;  
+    min-height: auto;
+  }
+
   .moments h2 {
     font-size: 30px;
   }
   
   .slide-track img {
     height: 200px;
+  }
+
+  .slide-track img {
+    height: 300px;
+  }
+  .meal-btn{
+     font-size: 13px!important;
   }
 }

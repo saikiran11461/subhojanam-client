@@ -61,6 +61,10 @@
 }
 
 @media (max-width: 768px) {
+  .hospital-section {
+    padding: 40px 20px;
+  }
+
   .hospital-list {
     gap: 15px;
   }

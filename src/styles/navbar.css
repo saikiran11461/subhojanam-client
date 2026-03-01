@@ -94,18 +94,16 @@
 
 @media (max-width: 768px) {
   .navbar__container {
-    flex-direction: column;
-    gap: 15px;
+    justify-content: space-between;
+  }
+
+  .navbar__logo img {
+    height: 50px;
   }
   
-  .navbar__buttons {
-    width: 100%;
-    justify-content: center;
-  }
-  
-  .donate-btn, .exempt-btn {
-    flex: 1;
-    justify-content: center;
+  .donate-btn {
+    padding: 8px 20px;
+    font-size: 13px;
   }
 }
 

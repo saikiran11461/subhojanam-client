@@ -166,6 +166,10 @@
 }
 
 @media (max-width: 768px) {
+  .meal-section {
+    padding: 40px 20px;
+  }
+
   .meal-section h2 {
     font-size: 30px;
   }
@@ -183,6 +187,7 @@
   }
   
   .meal-card {
-    width: 150px;
+    width: 246px;
+    padding: 25px 20px;
   }
 }

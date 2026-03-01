@@ -161,6 +161,10 @@
 }
 
 @media (max-width: 968px) {
+  .about-section {
+    padding: 40px 20px;
+  }
+
   .about-content {
     flex-direction: column;
     gap: 40px;

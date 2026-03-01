@@ -46,7 +46,7 @@ function Home() {
       <Navbar />
       <Hero />
       <DonationSection />
-      <SpecialSeva />
+      {/* <SpecialSeva /> */}
       <Moments />
       <QuoteSection />
       <Impact />
@@ -54,7 +54,7 @@ function Home() {
       <VideoSection />
       <MealSection />
       <AboutSection />
-      <HospitalsSection />
+      {/* <HospitalsSection /> */}
       {/* <TrustSection /> */}
       <StoriesSection />
       <FeaturedOn />

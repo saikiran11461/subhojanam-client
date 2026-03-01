@@ -129,6 +129,10 @@
 }
 
 @media (max-width: 968px) {
+  .impact-section {
+    padding: 40px 20px;
+  }
+
   .impact-cards {
     gap: 50px;
   }

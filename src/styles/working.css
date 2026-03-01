@@ -163,6 +163,10 @@
 }
 
 @media (max-width: 968px) {
+  .how-section {
+    padding: 40px 20px;
+  }
+
   .how-section h2 {
     font-size: 30px;
   }

@@ -293,6 +293,10 @@ console.log("Response data:", data);
             ))}
           </div>
 
+          <div className="special-day-text">
+            Annadana served on my special day (₹ 25,000)
+          </div>
+
           <input
             type="number"
             placeholder="Enter custom amount (₹)"
@@ -364,16 +368,26 @@ console.log("Response data:", data);
               </select>
 
               <div className="date-row">
-                <input type="date" name="sevaDate" className="form-field" onChange={handleChange} />
-                <input type="date" name="dob" className="form-field" onChange={handleChange} />
+                <div className="date-field-wrapper">
+                  <label className="date-label">Seva Date</label>
+                  <input type="date" name="sevaDate" className="form-field" onChange={handleChange} />
+                </div>
+                <div className="date-field-wrapper">
+                  <label className="date-label">Date of Birth</label>
+                  <input type="date" name="dob" className="form-field" onChange={handleChange} />
+                </div>
               </div>
 
-              <div className="amount-display-box">
-                <div className="amount-label">Donation Amount</div>
-                <div className="amount-value">₹{finalAmount.toLocaleString()}</div>
-                <div className="meal-message">
-                  ❤️ Your donation will feed {meals} caregivers today
-                </div>
+              <input 
+                type="text" 
+                className="amount-input-blocked" 
+                value={`₹${finalAmount.toLocaleString()}`}
+                readOnly
+                disabled
+              />
+              
+              <div className="meal-message">
+                ❤️ Your donation will feed {meals} caregivers today
               </div>
 
               <label className="checkbox-row">

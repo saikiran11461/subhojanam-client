@@ -34,12 +34,7 @@
 
 @media (max-width: 768px) {
   .topbar__content {
-    flex-direction: column;
-    gap: 5px;
+    text-align: center;
     font-size: 12px;
-  }
-  
-  .divider {
-    display: none;
   }
 }

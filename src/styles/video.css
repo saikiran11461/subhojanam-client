@@ -60,6 +60,10 @@
 }
 
 @media (max-width: 768px) {
+  .video-section {
+    padding: 40px 20px;
+  }
+
   .video-section h2 {
     font-size: 30px;
   }

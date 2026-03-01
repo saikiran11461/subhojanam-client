@@ -38,10 +38,10 @@ function AboutSection() {
             <h3>What We Serve</h3>
 
             <ul>
-              <li>✔ Steamed rice, served hot & fresh to every individual</li>
-              <li>✔ Sambar with fresh vegetables, cooked in the temple kitchen</li>
-              <li>✔ Hygienic & nutritionally balanced meals</li>
-              <li>✔ FSSAI-certified temple kitchens</li>
+              <li>Steamed rice, served hot & fresh to every individual</li>
+              <li>Sambar with fresh vegetables, cooked in the temple kitchen</li>
+              <li>Hygienic & nutritionally balanced meals</li>
+              <li>FSSAI-certified temple kitchens</li>
             </ul>
           </div>
 

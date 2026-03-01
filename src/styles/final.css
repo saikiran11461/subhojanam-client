@@ -82,7 +82,7 @@
   width: 0;
   height: 0;
   border-radius: 50%;
-  background: #0A97EF;
+  background: #FEF2E1;
   transform: translate(-50%, -50%);
   transition: width 0.6s, height 0.6s;
   z-index: -1;
@@ -94,12 +94,16 @@
 }
 
 .cta-btn:hover {
-  color: white;
+  color: black;
   transform: translateY(-6px) scale(1.05);
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
 }
 
 @media (max-width: 768px) {
+  .final-cta {
+    padding: 40px 20px;
+  }
+
   .final-cta h2 {
     font-size: 32px;
   }

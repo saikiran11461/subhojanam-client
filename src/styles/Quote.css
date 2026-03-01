@@ -83,6 +83,10 @@
 
 /* Responsive */
 @media (max-width: 968px) {
+  .quote-section {
+    padding: 40px 20px;
+  }
+
   .quote-box {
     flex-direction: column;
     padding: 40px;

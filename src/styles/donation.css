@@ -159,6 +159,19 @@
 }
 
 
+.special-day-text {
+  background: linear-gradient(135deg, #fff3cd 0%, #ffe69c 100%);
+  color: #856404;
+  padding: 12px 20px;
+  border-radius: 15px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 15px;
+  border: 2px solid #ffc107;
+  box-shadow: 0 4px 10px rgba(255, 193, 7, 0.2);
+}
+
 .input-box {
   width: 100%;
   padding: 12px;
@@ -177,6 +190,13 @@
   box-shadow: 0 0 0 3px rgba(10, 151, 239, 0.1);
 }
 
+.meal-info {
+  color: #0A97EF!important;
+  font-weight: 600;
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 12px;
+}
 
 .big-btn {
   width: 100%;
@@ -213,7 +233,7 @@
   margin-top: 12px;
   font-size: 12px;
   color: #666;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 .info-item {
@@ -514,6 +534,20 @@
   margin-bottom: 6px;
 }
 
+.amount-input-blocked {
+  width: 100%;
+  font-size: 24px;
+  color: #0A97EF;
+  font-weight: 700;
+  text-align: center;
+  padding: 12px;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  background: #f9f9f9;
+  margin-bottom: 6px;
+  cursor: not-allowed;
+}
+
 .meal-message {
   font-size: 12px;
   color: #555;
@@ -561,5 +595,36 @@
   .form-field {
     padding: 9px 12px;
     font-size: 13px;
+  }
+
+  .main-section {
+    padding: 40px 20px;
+  }
+  
+  .small-info {
+    flex-wrap: nowrap;
+    gap: 3px;
+    font-size: 9px;
+    white-space: nowrap;
+    font-weight: 600;
+  }
+  
+  .info-item {
+    gap: 2px;
+    white-space: nowrap;
+  }
+  
+  .info-separator {
+    margin: 0 1px;
+    font-size: 8px;
+  }
+  
+  .info-icon-circle {
+    width: 14px;
+    height: 14px;
+  }
+  
+  .info-icon {
+    font-size: 8px;
   }
 }

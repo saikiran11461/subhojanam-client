@@ -153,6 +153,10 @@
 }
 
 @media (max-width: 968px) {
+  .stories {
+    padding: 40px 20px;
+  }
+
   .stories h2 {
     font-size: 30px;
   }
