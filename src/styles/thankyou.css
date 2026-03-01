@@ -1,6 +1,6 @@
 .thankyou-page {
   min-height: 100vh;
-  background: linear-gradient(180deg, hsl(35, 30%, 97%), hsl(38, 40%, 94%));
+  background: #FEF2E1;
   font-family: 'Lato', sans-serif;
   color: hsl(25, 40%, 12%);
 }
@@ -8,7 +8,7 @@
 .thankyou-top-bar {
   height: 6px;
   width: 100%;
-  background: linear-gradient(135deg, hsl(32, 85%, 52%), hsl(42, 90%, 58%));
+  background: linear-gradient(135deg, #0A97EF, #2196f3);
 }
 
 .thankyou-container {
@@ -56,7 +56,7 @@
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background-color: hsl(42, 90%, 58%);
+  background-color: #2196f3;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -96,7 +96,7 @@
   font-family: 'Playfair Display', serif;
   font-size: 1.125rem;
   font-weight: 600;
-  color: hsl(32, 85%, 52%);
+  color: #0A97EF;
   margin: 0;
 }
 
@@ -107,7 +107,7 @@
   margin-bottom: 24px;
   background: #ffffff;
   border: 1px solid #d6eaff;
-  box-shadow: 0 4px 24px -4px hsl(32 85% 52% / 0.15);
+  box-shadow: 0 4px 24px -4px rgba(10, 151, 239, 0.15);
   animation: float-up 0.8s ease-out forwards;
   animation-delay: 0.4s;
   opacity: 0;
@@ -131,7 +131,7 @@
   height: 48px;
   min-width: 48px;
   border-radius: 12px;
-  background: linear-gradient(135deg, hsl(32, 85%, 52%), hsl(42, 90%, 58%));
+  background: linear-gradient(135deg, #0A97EF, #2196f3);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -184,7 +184,7 @@
   padding: 24px;
   text-align: center;
   margin-bottom: 24px;
-  background: linear-gradient(135deg, hsl(32, 85%, 52%) 0%, hsl(15, 70%, 45%) 100%);
+  background: linear-gradient(135deg, #0A97EF 0%, #2196f3 100%);
   animation: float-up 0.8s ease-out forwards;
   animation-delay: 0.5s;
   opacity: 0;
@@ -226,7 +226,7 @@
   margin-bottom: 24px;
   background: #ffffff;
   border: 1px solid #d6eaff;
-  box-shadow: 0 4px 24px -4px hsl(32 85% 52% / 0.15);
+  box-shadow: 0 4px 24px -4px rgba(10, 151, 239, 0.15);
   animation: float-up 0.8s ease-out forwards;
   animation-delay: 0.6s;
   opacity: 0;
@@ -290,7 +290,7 @@
   font-family: 'Playfair Display', serif;
   font-size: 1.25rem;
   font-weight: 700;
-  color: hsl(32, 85%, 52%);
+  color: #0A97EF;
 }
 
 /* Action Buttons */
@@ -338,7 +338,7 @@
 }
 
 .btn-download {
-  background: linear-gradient(135deg, hsl(32, 85%, 52%), hsl(42, 90%, 58%));
+  background: linear-gradient(135deg, #0A97EF, #2196f3);
   color: #fff;
 }
 
@@ -367,7 +367,7 @@
 }
 
 .thankyou-footer a {
-  color: hsl(32, 85%, 52%);
+  color: #0A97EF;
   text-decoration: underline;
   text-underline-offset: 2px;
 }
@@ -384,6 +384,6 @@
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px hsl(42 90% 58% / 0.2); }
-  50% { box-shadow: 0 0 40px hsl(42 90% 58% / 0.4); }
+  0%, 100% { box-shadow: 0 0 20px rgba(33, 150, 243, 0.2); }
+  50% { box-shadow: 0 0 40px rgba(33, 150, 243, 0.4); }
 }
