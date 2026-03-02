@@ -119,6 +119,13 @@
   border: 2px solid #e0e0e0;
 }
 
+.card.special:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  border-color: #0A97EF;
+  background: #FEF2E1;
+}
+
 .tag {
   position: absolute;
   top: -8px;

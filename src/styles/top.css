@@ -16,6 +16,24 @@
   animation: slideDown 0.5s ease;
 }
 
+.topbar-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: white;
+  stroke-width: 2;
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
 @keyframes slideDown {
   from {
     opacity: 0;

@@ -48,7 +48,7 @@ function MealSection() {
            </div>
         <p className="kitchen-text">
           Prepared in FSSAI-certified ISKCON temple kitchens with the highest
-          standards of cleanliness and devotion
+          standards of <br />cleanliness and devotion
         </p>
 
         <p className="price-text">

@@ -127,6 +127,7 @@
 .right ul {
   list-style: none;
   padding: 0;
+  text-align: left;
 }
 
 .right li {
@@ -137,6 +138,7 @@
   line-height: 1.6;
   font-size: 16px;
   transition: transform 0.3s ease;
+  text-align: left;
 }
 
 .right li:hover {

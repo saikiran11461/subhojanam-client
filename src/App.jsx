@@ -49,10 +49,10 @@ function Home() {
       <DonationSection />
       {/* <SpecialSeva /> */}
       <Moments />
-      <QuoteSection />
+      <WhySwasthya/>
       <Impact />
       <Working />
-      <WhySwasthya/>
+      <QuoteSection />
       <VideoSection />
       <MealSection />
       <AboutSection />

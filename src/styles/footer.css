@@ -50,6 +50,18 @@ footer {
   margin-top: 2px;
   color: #ffffff;
 }
+
+.footer-contact-item a {
+  color: rgba(255, 255, 255, 0.95);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-contact-item a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
 /* Quick Links */
 .footer-links h4,
 .footer-social h4 {

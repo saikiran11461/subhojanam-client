@@ -1,3 +1,4 @@
+import { Heart, Award } from "lucide-react"
 import "../styles/navbar.css"
 import logo from "../assets/logo.png"
 
@@ -19,11 +20,13 @@ function Navbar() {
 
         <div className="navbar__buttons">
           <button className="donate-btn" onClick={scrollToDonation}>
-             Donate Now
+            <Heart className="donate-btn-icon" />
+            Donate Now
           </button>
 
           <button className="exempt-btn" onClick={scrollToDonation}>
-             80G Exempt
+            <Award className="exempt-btn-icon" />
+            80G Exempt
           </button>
         </div>
 

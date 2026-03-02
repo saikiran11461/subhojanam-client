@@ -11,10 +11,10 @@ const quickLinks = [
 ];
 
 const socialLinks = [
-  { icon: Facebook, href: "https://facebook.com/iskconvizag", label: "Facebook" },
-  { icon: Instagram, href: "https://instagram.com/iskconvizag", label: "Instagram" },
+  { icon: Facebook, href: "https://www.facebook.com/hkm.vizag", label: "Facebook" },
+  { icon: Instagram, href: "https://www.instagram.com/hare_krishna_vizag/", label: "Instagram" },
   { icon: Twitter, href: "https://twitter.com/iskconvizag", label: "Twitter" },
-  { icon: Youtube, href: "https://youtube.com/iskconvizag", label: "YouTube" },
+  { icon: Youtube, href: "https://www.youtube.com/user/harekrishnavizag", label: "YouTube" },
 ];
 
 const Footer = () => {
@@ -35,11 +35,11 @@ const Footer = () => {
             </div>
             <div className="footer-contact-item">
               <Mail />
-              <span>info@subhojanam.org</span>
+              <a href="mailto:mukunda@hkmvizag.org">mukunda@hkmvizag.org</a>
             </div>
             <div className="footer-contact-item">
               <Phone />
-              <span>+91 891 000 0000</span>
+              <a href="tel:+918977761187">+91 8977761187</a>
             </div>
           </div>
 

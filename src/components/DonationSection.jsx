@@ -35,6 +35,15 @@ function DonationSection() {
     { amount: 5000, meals: 200 }
   ];
 
+  const monthlyDonationOptions = [
+    { amount: 500, meals: 20 },
+    { amount: 1000, meals: 40 },
+    { amount: 1500, meals: 60 },
+    { amount: 2000, meals: 80 },
+    { amount: 2500, meals: 100 },
+    { amount: 3000, meals: 120 }
+  ];
+
   const navigate = useNavigate();
 
   const handleSelect = (amount) => {
@@ -134,7 +143,7 @@ function DonationSection() {
             field.focus();
           }
         } else if (!formData.state) {
-          const field = document.querySelector('input[name="state"]');
+          const field = document.querySelector('select[name="state"]');
           if (field) {
             field.style.border = '2px solid #ff4444';
             field.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -272,16 +281,16 @@ console.log("Response data:", data);
           </div>
 
           <div className="cards">
-            {donationOptions.map((item) => (
+            {(type === "monthly" ? monthlyDonationOptions : donationOptions).map((item) => (
               <div
                 key={item.amount}
                 className={`card 
                   ${selectedAmount === item.amount ? "selected" : ""}
-                  ${item.popular ? "special" : ""}
+                  ${item.popular && type === "one" ? "special" : ""}
                 `}
                 onClick={() => handleSelect(item.amount)}
               >
-                {item.popular && <div className="tag">MOST DONATED</div>}
+                {item.popular && type === "one" && <div className="tag">MOST DONATED</div>}
                 <h3>₹{item.amount.toLocaleString()}</h3>
                 <p>
                   {type === "monthly"
@@ -293,9 +302,17 @@ console.log("Response data:", data);
             ))}
           </div>
 
-          <div className="special-day-text">
-            Annadana served on my special day (₹ 25,000)
-          </div>
+          {type === "one" && (
+            <button
+              className="special-day-text"
+              onClick={() => {
+                setCustomAmount("25000");
+                setSelectedAmount(null);
+              }}
+            >
+              Annadana served on my special day (₹ 25,000)
+            </button>
+          )}
 
           <input
             type="number"
@@ -355,9 +372,9 @@ console.log("Response data:", data);
 
             <div className="form-grid">
 
-              <input type="text" name="name" placeholder="Full Name *" className="form-field" onChange={handleChange} />
-              <input type="email" name="email" placeholder="Email Address *" className="form-field" onChange={handleChange} />
+              <input type="text" name="name" placeholder="Donor Name *" className="form-field" onChange={handleChange} />
               <input type="tel" name="mobile" placeholder="Mobile Number *" className="form-field" onChange={handleChange} />
+              <input type="email" name="email" placeholder="Email Address (Optional)" className="form-field" onChange={handleChange} />
 
               <select name="occasion" className="form-field" onChange={handleChange}>
                 <option value="">Occasion (Optional)</option>
@@ -422,14 +439,50 @@ console.log("Response data:", data);
                       onChange={handleChange} 
                       value={formData.city}
                     />
-                    <input 
-                      type="text" 
+                    <select 
                       name="state" 
-                      placeholder="State *" 
                       className="form-field" 
                       onChange={handleChange} 
                       value={formData.state}
-                    />
+                    >
+                      <option value="">Select State *</option>
+                      <option value="Andhra Pradesh">Andhra Pradesh</option>
+                      <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                      <option value="Assam">Assam</option>
+                      <option value="Bihar">Bihar</option>
+                      <option value="Chhattisgarh">Chhattisgarh</option>
+                      <option value="Goa">Goa</option>
+                      <option value="Gujarat">Gujarat</option>
+                      <option value="Haryana">Haryana</option>
+                      <option value="Himachal Pradesh">Himachal Pradesh</option>
+                      <option value="Jharkhand">Jharkhand</option>
+                      <option value="Karnataka">Karnataka</option>
+                      <option value="Kerala">Kerala</option>
+                      <option value="Madhya Pradesh">Madhya Pradesh</option>
+                      <option value="Maharashtra">Maharashtra</option>
+                      <option value="Manipur">Manipur</option>
+                      <option value="Meghalaya">Meghalaya</option>
+                      <option value="Mizoram">Mizoram</option>
+                      <option value="Nagaland">Nagaland</option>
+                      <option value="Odisha">Odisha</option>
+                      <option value="Punjab">Punjab</option>
+                      <option value="Rajasthan">Rajasthan</option>
+                      <option value="Sikkim">Sikkim</option>
+                      <option value="Tamil Nadu">Tamil Nadu</option>
+                      <option value="Telangana">Telangana</option>
+                      <option value="Tripura">Tripura</option>
+                      <option value="Uttar Pradesh">Uttar Pradesh</option>
+                      <option value="Uttarakhand">Uttarakhand</option>
+                      <option value="West Bengal">West Bengal</option>
+                      <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                      <option value="Chandigarh">Chandigarh</option>
+                      <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
+                      <option value="Delhi">Delhi</option>
+                      <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                      <option value="Ladakh">Ladakh</option>
+                      <option value="Lakshadweep">Lakshadweep</option>
+                      <option value="Puducherry">Puducherry</option>
+                    </select>
                   </div>
                   <input 
                     type="text" 
