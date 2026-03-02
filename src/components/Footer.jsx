@@ -77,7 +77,7 @@ const Footer = () => {
         </div>
 
         <div className="footer-bottom">
-          <p>© 2026 ISKCON Visakhapatnam — Subhojanam Seva</p>
+          <p>© 2026 Hare Krishna Movement Visakhapatnam — Subhojanam Seva</p>
           <div className="footer-bottom-links">
             <a href="#privacy">Privacy</a>
             <a href="#terms">Terms</a>
