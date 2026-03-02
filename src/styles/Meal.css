@@ -186,11 +186,28 @@
   }
   
   .meal-items {
-    gap: 15px;
+    gap: 10px;
+    padding: 0;
+    max-width: 100%;
+    justify-content: space-between;
   }
   
   .meal-card {
-    width: 246px;
-    padding: 25px 20px;
+    width: calc(50% - 5px);
+    max-width: 180px;
+    padding: 18px 12px;
+    flex-shrink: 0;
+  }
+  
+  .meal-card h4 {
+    font-size: 14px;
+  }
+  
+  .meal-card span {
+    font-size: 11px;
+  }
+  
+  .emoji {
+    font-size: 26px;
   }
 }

@@ -18,7 +18,7 @@
   box-shadow: 0 30px 70px rgba(0, 0, 0, 0.08);
 }
 
-/* IMAGE */
+
 .left img {
   width: 360px;
   border-radius: 24px;
@@ -30,27 +30,27 @@
   transform: scale(1.02);
 }
 
-/* RIGHT SIDE */
+
 .right {
   flex: 1;
   position: relative;
   text-align: center;
 }
 
-/* Decorative quote icon */
+
 .quote-mark {
   font-size: 80px;
-  color: rgba(10, 151, 239, 0.15);
+  color: #000000;
   font-family: Georgia, serif;
   line-height: 1;
   margin-bottom: 0px;
 }
 
-/* Main quote text */
+
 .quote-text {
   font-size: 32px !important;
   font-style: italic;
-  color: #1a1a1a;
+  color: #000000 !important;
   line-height: 1.4 !important;
   margin-bottom: 35px;
   font-weight: 700;
@@ -60,7 +60,7 @@
   text-align: center;
 }
 
-/* Author section */
+
 .author-section {
   text-align: center;
   margin-top: 40px;
@@ -81,7 +81,7 @@
   display: block;
 }
 
-/* Responsive */
+
 @media (max-width: 968px) {
   .quote-section {
     padding: 40px 20px;

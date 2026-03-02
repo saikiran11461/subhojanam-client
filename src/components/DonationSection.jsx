@@ -125,9 +125,9 @@ function DonationSection() {
 
 
     if (formData.email && formData.email.trim() !== '') {
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
       if (!emailRegex.test(formData.email)) {
-        setErrorMessage("Please enter a valid email address with @ symbol");
+        setErrorMessage("Please enter a valid email address (e.g., example@gmail.com)");
         const field = document.querySelector('input[name="email"]');
         if (field) {
           field.style.border = '2px solid #ff4444';
@@ -452,10 +452,12 @@ console.log("Response data:", data);
                 ❤️ Your donation will feed {meals} caregivers today
               </div>
 
-              <label className="checkbox-row">
-                <input type="checkbox" name="certificate" onChange={handleChange} />
-                <span>I would like to receive 80(G) Certificate</span>
-              </label>
+              {finalAmount > 1000 && (
+                <label className="checkbox-row">
+                  <input type="checkbox" name="certificate" onChange={handleChange} />
+                  <span>I would like to receive 80(G) Certificate</span>
+                </label>
+              )}
 
               {finalAmount > 1000 && (
                 <label className="checkbox-row">
