@@ -32,12 +32,14 @@ const ThankYouPage = () => {
       <div className="thankyou-top-bar" />
 
       <div className="thankyou-container">
-        <div className="thankyou-logo">
-          <img src={logo} width={100} alt="Subhojanam Logo" />
+        <div className="thankyou-header">
+          <div className="thankyou-logo">
+            <img src={logo} alt="Subhojanam Logo" />
+          </div>
+          <h1 className="thankyou-title">Hare Krishna! 🙏</h1>
         </div>
 
         <div className="thankyou-heading">
-          <h1>Hare Krishna! 🙏</h1>
           <p className="subtitle">Thank You for Your Generous Donation</p>
         </div>
 

@@ -11,8 +11,8 @@
   padding: 12px 20px;
   display: flex;
   justify-content: center;
-  align-items: center;
-  gap: 15px;
+  /* align-items: center; */
+  gap: 5px;
   animation: slideDown 0.5s ease;
 }
 
@@ -53,6 +53,7 @@
 @media (max-width: 768px) {
   .topbar__content {
     text-align: center;
-    font-size: 12px;
+    font-size: 11px;
+    
   }
 }

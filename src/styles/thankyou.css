@@ -23,6 +23,55 @@
   }
 }
 
+/* Logo */
+.thankyou-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 16px;
+  margin-bottom: 16px;
+  animation: scale-in 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.thankyou-logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.thankyou-logo img {
+  width: 60px;
+  height: auto;
+  display: block;
+}
+
+.thankyou-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  color: hsl(25, 40%, 12%);
+  line-height: 1.2;
+  display: flex;
+  align-items: center;
+}
+
+@media (min-width: 640px) {
+  .thankyou-header {
+    gap: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .thankyou-logo img {
+    width: 100px;
+  }
+  
+  .thankyou-title {
+    font-size: 2.25rem;
+  }
+}
+
 /* Success Icon */
 .success-icon-wrapper {
   display: flex;
@@ -78,26 +127,18 @@
   opacity: 0;
 }
 
-.thankyou-heading h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2rem;
-  font-weight: 700;
-  margin: 0 0 12px;
-  color: hsl(25, 40%, 12%);
-}
-
-@media (min-width: 640px) {
-  .thankyou-heading h1 {
-    font-size: 2.5rem;
-  }
-}
-
 .thankyou-heading .subtitle {
   font-family: 'Playfair Display', serif;
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-weight: 600;
   color: #0A97EF;
   margin: 0;
+}
+
+@media (min-width: 640px) {
+  .thankyou-heading .subtitle {
+    font-size: 1.125rem;
+  }
 }
 
 /* Message Card */

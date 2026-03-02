@@ -20,6 +20,7 @@ function DonationSection() {
     sevaDate: "",
     dob: "",
     certificate: false,
+    mahaprasadam: false,
     panNumber: "",
     address: "",
     city: "",
@@ -48,7 +49,7 @@ function DonationSection() {
 
   const handleSelect = (amount) => {
     setSelectedAmount(amount);
-    setCustomAmount("");
+    setCustomAmount(amount.toString());
   };
 
   const handleCustomChange = (e) => {
@@ -59,7 +60,7 @@ function DonationSection() {
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     
-    // Clear error border when user starts typing
+  
     if (e.target.style.border) {
       e.target.style.border = '';
     }
@@ -82,24 +83,17 @@ function DonationSection() {
   const handlePayment = async () => {
     setErrorMessage("");
     
-    // Remove all previous error indicators
+  
     document.querySelectorAll('.form-field').forEach(field => {
       field.style.border = '';
     });
 
-    if (!formData.name || !formData.email || !formData.mobile) {
-      setErrorMessage("Please fill all required fields (Name, Email, Mobile)");
+    if (!formData.name || !formData.mobile) {
+      setErrorMessage("Please fill all required fields (Name, Mobile)");
       
-      // Highlight empty fields
+    
       if (!formData.name) {
         const field = document.querySelector('input[name="name"]');
-        if (field) {
-          field.style.border = '2px solid #ff4444';
-          field.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          field.focus();
-        }
-      } else if (!formData.email) {
-        const field = document.querySelector('input[name="email"]');
         if (field) {
           field.style.border = '2px solid #ff4444';
           field.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -116,11 +110,61 @@ function DonationSection() {
       return;
     }
 
+ 
+    const mobileRegex = /^[0-9]{10}$/;
+    if (!mobileRegex.test(formData.mobile)) {
+      setErrorMessage("Please enter a valid 10-digit mobile number");
+      const field = document.querySelector('input[name="mobile"]');
+      if (field) {
+        field.style.border = '2px solid #ff4444';
+        field.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        field.focus();
+      }
+      return;
+    }
+
+
+    if (formData.email && formData.email.trim() !== '') {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(formData.email)) {
+        setErrorMessage("Please enter a valid email address with @ symbol");
+        const field = document.querySelector('input[name="email"]');
+        if (field) {
+          field.style.border = '2px solid #ff4444';
+          field.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          field.focus();
+        }
+        return;
+      }
+    }
+
+
+    if (!formData.sevaDate || !formData.dob) {
+      setErrorMessage("Please fill Seva Date and Date of Birth");
+      
+      if (!formData.sevaDate) {
+        const field = document.querySelector('input[name="sevaDate"]');
+        if (field) {
+          field.style.border = '2px solid #ff4444';
+          field.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          field.focus();
+        }
+      } else if (!formData.dob) {
+        const field = document.querySelector('input[name="dob"]');
+        if (field) {
+          field.style.border = '2px solid #ff4444';
+          field.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          field.focus();
+        }
+      }
+      return;
+    }
+
     if (formData.certificate) {
       if (!formData.panNumber || !formData.address || !formData.city || !formData.state || !formData.pincode) {
         setErrorMessage("Please fill all certificate details (PAN Number, Address, City, State, Pincode) to receive 80G Certificate");
         
-        // Highlight empty certificate fields
+
         if (!formData.panNumber) {
           const field = document.querySelector('input[name="panNumber"]');
           if (field) {
@@ -201,6 +245,7 @@ console.log("Response data:", data);
         key: data.key,
         currency: "INR",
         name: "Subhojanam",
+        image: "https://annadan.harekrishnavizag.org/assets/logo-D-uVL5iO.png",
         description:
           type === "one"
             ? "One-time Donation"
@@ -386,11 +431,11 @@ console.log("Response data:", data);
 
               <div className="date-row">
                 <div className="date-field-wrapper">
-                  <label className="date-label">Seva Date</label>
+                  <label className="date-label">Seva Date *</label>
                   <input type="date" name="sevaDate" className="form-field" onChange={handleChange} />
                 </div>
                 <div className="date-field-wrapper">
-                  <label className="date-label">Date of Birth</label>
+                  <label className="date-label">Date of Birth *</label>
                   <input type="date" name="dob" className="form-field" onChange={handleChange} />
                 </div>
               </div>
@@ -411,6 +456,13 @@ console.log("Response data:", data);
                 <input type="checkbox" name="certificate" onChange={handleChange} />
                 <span>I would like to receive 80(G) Certificate</span>
               </label>
+
+              {finalAmount > 1000 && (
+                <label className="checkbox-row">
+                  <input type="checkbox" name="mahaprasadam" onChange={handleChange} />
+                  <span>I would like to receive Maha Prasadam</span>
+                </label>
+              )}
 
               {formData.certificate && (
                 <div className="certificate-fields">

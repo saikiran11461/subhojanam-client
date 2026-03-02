@@ -15,7 +15,7 @@ function Impact() {
 
         <div className="impact-card">
           <div className="circle"><FaUtensils /></div>
-          <h3>42Cr+</h3>
+          <h3>2Cr+</h3>
           <h4>Stomachs Filled with Hope</h4>
           <p>Ensuring no one sleeps hungry on our watch.</p>
         </div>
