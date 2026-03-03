@@ -98,6 +98,21 @@
   line-height: 1;
 }
 
+.hospital-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: #0A97EF;
+  margin-bottom: 16px;
+  text-align: center;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e3f2fd;
+}
+
+.story-card:hover .hospital-name {
+  color: #0d7fc9;
+  border-bottom-color: #0A97EF;
+}
+
 .main-quote {
   font-style: italic;
   font-weight: 600;

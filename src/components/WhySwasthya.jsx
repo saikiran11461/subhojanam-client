@@ -55,9 +55,9 @@ function WhySwasthya() {
 
         </div>
 
-        {/* RIGHT IMAGE */}
+      
         <div className="why-right">
-          <img src={kitchenImg} alt="Subhojanam Kitchen" />
+          <img src={"https://storage.googleapis.com/subhojanam/cooking.png"} alt="Subhojanam Kitchen" />
         </div>
 
       </div>

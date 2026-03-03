@@ -17,6 +17,8 @@ function StoriesSection() {
         <div className="story-card">
           <div className="quote">❝</div>
 
+          <p className="hospital-name">King George Hospital</p>
+
           <p className="main-quote">
             "I used to choose between my hunger and his medicine. Today,
             because of you, I didn't have to choose."
@@ -30,7 +32,7 @@ function StoriesSection() {
 
           <div className="story-user">
             <div className="avatar">
-              <img src={savitriAmmaImg} alt="Savitri Amma" />
+              <img src={"https://storage.googleapis.com/subhojanam/savitriamma.png"} alt="Savitri Amma" />
             </div>
             <div>
               <strong>Savitri Amma</strong>
@@ -41,6 +43,8 @@ function StoriesSection() {
 
         <div className="story-card">
           <div className="quote">❝</div>
+
+          <p className="hospital-name">Tata Memorial Cancer Hospital</p>
 
           <p className="main-quote">
             "My legs were trembling from hunger. I thought I would collapse
@@ -55,7 +59,7 @@ function StoriesSection() {
 
           <div className="story-user">
             <div className="avatar">
-              <img src={rajeshImg} alt="Rajesh" />
+              <img src={"https://storage.googleapis.com/subhojanam/rajesh.png"} alt="Rajesh" />
             </div>
             <div>
               <strong>Rajesh</strong>
@@ -66,6 +70,8 @@ function StoriesSection() {
 
         <div className="story-card">
           <div className="quote">❝</div>
+
+          <p className="hospital-name">Government General Hospital</p>
 
           <p className="main-quote">
             "In this big city of strangers, I felt invisible.
@@ -80,7 +86,7 @@ function StoriesSection() {
 
           <div className="story-user">
             <div className="avatar">
-              <img src={gouriImg} alt="Gouri" />
+              <img src={"https://storage.googleapis.com/subhojanam/gouri.png"} alt="Gouri" />
             </div>
             <div>
               <strong>Gouri</strong>
