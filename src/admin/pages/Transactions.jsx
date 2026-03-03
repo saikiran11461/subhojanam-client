@@ -212,6 +212,7 @@ function Transactions() {
                     <th>Contact</th>
                     <th>Amount</th>
                     <th>80G Certificate</th>
+                    <th>Prasadam</th>
                     <th>Date & Time</th>
                     <th>Status</th>
                     <th>Actions</th>
@@ -231,6 +232,15 @@ function Transactions() {
                       <td className="amount">₹{txn.amount.toLocaleString()}</td>
                       <td className="certificate-cell">
                         {txn.certificate ? (
+                          <span className="certificate-yes">
+                            <Check size={18} color="#22c55e" />
+                          </span>
+                        ) : (
+                          <span className="certificate-no">-</span>
+                        )}
+                      </td>
+                      <td className="certificate-cell">
+                        {txn.mahaprasadam ? (
                           <span className="certificate-yes">
                             <Check size={18} color="#22c55e" />
                           </span>
@@ -372,6 +382,48 @@ function Transactions() {
                       <span className="detail-label">Pincode:</span>
                       <span className="detail-value">{selectedTransaction.pincode || 'N/A'}</span>
                     </div>
+                  </div>
+                </div>
+              )}
+
+              {selectedTransaction.mahaprasadam && (
+                <div className="detail-section certificate-section">
+                  <h3>Maha Prasadam Details</h3>
+                  <div className="detail-grid">
+                    <div className="detail-item">
+                      <span className="detail-label">Delivery Option:</span>
+                      <span className="detail-value">
+                        {selectedTransaction.prasadamAddressOption === 'same' 
+                          ? 'Same as certificate address' 
+                          : 'Different address'}
+                      </span>
+                    </div>
+                    {selectedTransaction.prasadamAddressOption === 'different' && (
+                      <div className="detail-item full-width">
+                        <span className="detail-label">Delivery Address:</span>
+                        <span className="detail-value">{selectedTransaction.prasadamAddress || 'N/A'}</span>
+                      </div>
+                    )}
+                    {selectedTransaction.prasadamAddressOption === 'same' && selectedTransaction.certificate && (
+                      <>
+                        <div className="detail-item full-width">
+                          <span className="detail-label">Address:</span>
+                          <span className="detail-value">{selectedTransaction.address || 'N/A'}</span>
+                        </div>
+                        <div className="detail-item">
+                          <span className="detail-label">City:</span>
+                          <span className="detail-value">{selectedTransaction.city || 'N/A'}</span>
+                        </div>
+                        <div className="detail-item">
+                          <span className="detail-label">State:</span>
+                          <span className="detail-value">{selectedTransaction.state || 'N/A'}</span>
+                        </div>
+                        <div className="detail-item">
+                          <span className="detail-label">Pincode:</span>
+                          <span className="detail-value">{selectedTransaction.pincode || 'N/A'}</span>
+                        </div>
+                      </>
+                    )}
                   </div>
                 </div>
               )}

@@ -363,6 +363,56 @@
   flex: 1;
 }
 
+.prasadam-address-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  padding: 18px;
+  background: linear-gradient(135deg, #f0f8ff 0%, #e8f4f8 100%);
+  border-radius: 12px;
+  border: 2px solid #d6eaff;
+  box-shadow: 0 2px 8px rgba(10, 151, 239, 0.08);
+}
+
+.section-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #0A97EF;
+  margin: 0 0 8px 0;
+}
+
+.radio-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 13px;
+  color: #555;
+  line-height: 1.4;
+}
+
+.radio-row input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: #0A97EF;
+  flex-shrink: 0;
+}
+
+.radio-row span {
+  flex: 1;
+}
+
+.address-textarea {
+  min-height: 100px;
+  resize: vertical;
+  font-family: inherit;
+  line-height: 1.5;
+  padding: 12px;
+}
+
 .certificate-fields {
   display: flex;
   flex-direction: column;

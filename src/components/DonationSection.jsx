@@ -21,6 +21,8 @@ function DonationSection() {
     dob: "",
     certificate: false,
     mahaprasadam: false,
+    prasadamAddressOption: "same",
+    prasadamAddress: "",
     panNumber: "",
     address: "",
     city: "",
@@ -462,8 +464,47 @@ console.log("Response data:", data);
               {finalAmount > 1000 && (
                 <label className="checkbox-row">
                   <input type="checkbox" name="mahaprasadam" onChange={handleChange} />
-                  <span>I would like to receive Maha Prasadam</span>
+                  <span>I would like to receive Maha Prasadam only within India</span>
                 </label>
+              )}
+
+              {formData.mahaprasadam && finalAmount >= 1000 && (
+                <div className="prasadam-address-section">
+                  <p className="section-label">Maha Prasadam Delivery Address:</p>
+                  
+                  <label className="radio-row">
+                    <input 
+                      type="radio" 
+                      name="prasadamAddressOption" 
+                      value="same"
+                      checked={formData.prasadamAddressOption === "same"}
+                      onChange={handleChange}
+                    />
+                    <span>Same as above</span>
+                  </label>
+
+                  <label className="radio-row">
+                    <input 
+                      type="radio" 
+                      name="prasadamAddressOption" 
+                      value="different"
+                      checked={formData.prasadamAddressOption === "different"}
+                      onChange={handleChange}
+                    />
+                    <span>I want to provide different address</span>
+                  </label>
+
+                  {formData.prasadamAddressOption === "different" && (
+                    <textarea
+                      name="prasadamAddress"
+                      placeholder="Enter complete delivery address with pincode *"
+                      className="form-field address-textarea"
+                      rows="4"
+                      onChange={handleChange}
+                      value={formData.prasadamAddress}
+                    />
+                  )}
+                </div>
               )}
 
               {formData.certificate && (
