@@ -461,7 +461,7 @@ console.log("Response data:", data);
                 </label>
               )}
 
-              {finalAmount > 1 && (
+              {finalAmount >= 1 && (
                 <label className="checkbox-row">
                   <input type="checkbox" name="mahaprasadam" onChange={handleChange} />
                   <span>I would like to receive Maha Prasadam only within India</span>
