@@ -454,21 +454,21 @@ console.log("Response data:", data);
                 ❤️ Your donation will feed {meals} caregivers today
               </div>
 
-              {finalAmount > 1000 && (
+              {finalAmount >= 1000 && (
                 <label className="checkbox-row">
                   <input type="checkbox" name="certificate" onChange={handleChange} />
                   <span>I would like to receive 80(G) Certificate</span>
                 </label>
               )}
 
-              {finalAmount >= 1 && (
+              {finalAmount >= 1000 && (
                 <label className="checkbox-row">
                   <input type="checkbox" name="mahaprasadam" onChange={handleChange} />
                   <span>I would like to receive Maha Prasadam only within India</span>
                 </label>
               )}
 
-              {formData.mahaprasadam && finalAmount >= 1 && (
+              {formData.mahaprasadam && finalAmount >= 1000 && (
                 <div className="prasadam-address-section">
                   <p className="section-label">Maha Prasadam Delivery Address:</p>
                   
