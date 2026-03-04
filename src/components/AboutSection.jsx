@@ -22,7 +22,7 @@ function AboutSection() {
             <h3>Our Mission</h3>
 
             <p>
-              Subhojanam is ISKCON Visakhapatnam's initiative to serve nutritious,
+              Subhojanam is ISKCON initiative to serve nutritious,
               sacred meals to caregivers and their families at government hospitals.
               We bring the Lord's prasadam to those going through their hardest days.
             </p>

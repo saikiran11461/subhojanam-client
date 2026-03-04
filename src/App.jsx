@@ -29,6 +29,7 @@ import Settings from "./admin/pages/Settings.jsx"
 import HospitalsSection from "./components/HospitalsSection.jsx"
 import FeaturedOn from "./components/FeaturedOn.jsx"
 import WhySwasthya from "./components/WhySwasthya.jsx"
+import ScrollToTop from "./components/ScrollToTop.jsx"
 
 function ProtectedRoute({ children }) {
   const token = localStorage.getItem("adminToken")
@@ -63,6 +64,7 @@ function Home() {
       <Final />
       <FAQsection />
       <Footer />
+      <ScrollToTop />
     </>
   )
 }
