@@ -32,7 +32,7 @@ function Moments() {
       </div>
 
       <button className="meal-btn" onClick={scrollToDonation}>
-        Sponsor a Meal Like This (₹500) →
+        Be the Sponsor →
       </button>
 
     </section>

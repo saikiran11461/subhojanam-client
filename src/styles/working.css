@@ -171,12 +171,25 @@
     font-size: 30px;
   }
   
+  .sub {
+    margin-bottom: 35px;
+  }
+  
   .steps::before {
     display: none;
   }
   
   .steps {
-    gap: 40px;
+    gap: 30px;
+    margin-bottom: 35px;
+  }
+  
+  .step {
+    padding: 0px 15px 20px;
+  }
+  
+  .icon {
+    margin-bottom: 20px;
   }
   
   .green-box {

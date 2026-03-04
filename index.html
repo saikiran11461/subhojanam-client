@@ -13,11 +13,31 @@
     <style>
       * {
         font-family: 'Poppins', sans-serif;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
       }
+      html {
+        overflow-x: hidden;
+        width: 100%;
+      }
+      img, video, iframe {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
       body {
         background-color: #FEF2E1;
         margin: 0;
         padding: 0;
+        overflow-x: hidden;
+        width: 100%;
+        max-width: 100vw;
+      }
+      #root {
+        width: 100%;
+        max-width: 100vw;
+        overflow-x: hidden;
       }
     </style>
   </head>

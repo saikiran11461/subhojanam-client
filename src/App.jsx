@@ -57,14 +57,14 @@ function Home() {
       <VideoSection />
       <MealSection />
       <AboutSection />
-      {/* <HospitalsSection /> */}
-      {/* <TrustSection /> */}
       <StoriesSection />
       <FeaturedOn />
       <Final />
       <FAQsection />
       <Footer />
       <ScrollToTop />
+      {/* <HospitalsSection /> */}
+      {/* <TrustSection /> */}
     </>
   )
 }

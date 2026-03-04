@@ -36,7 +36,7 @@ function StoriesSection() {
             </div>
             <div>
               <strong>Savitri Amma</strong>
-              <p>Caregiver, Victoria Hospital</p>
+              {/* <p>Caregiver, Victoria Hospital</p> */}
             </div>
           </div>
         </div>
@@ -63,7 +63,7 @@ function StoriesSection() {
             </div>
             <div>
               <strong>Rajesh</strong>
-              <p>Father, Indira Gandhi Child Health</p>
+              {/* <p>Father, Indira Gandhi Child Health</p> */}
             </div>
           </div>
         </div>
@@ -90,7 +90,7 @@ function StoriesSection() {
             </div>
             <div>
               <strong>Gouri</strong>
-              <p>Caregiver, Bowring Hospital</p>
+              {/* <p>Caregiver, Bowring Hospital</p> */}
             </div>
           </div>
         </div>
