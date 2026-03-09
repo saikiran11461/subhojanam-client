@@ -488,6 +488,20 @@ function Settings() {
                 value={settings.receiptSettings?.startNumber}
                 onChange={(e) => handleNestedChange('receiptSettings', 'startNumber', parseInt(e.target.value))}
               />
+              <small style={{ color: '#666' }}>
+                Set the starting receipt number for new receipts
+              </small>
+            </div>
+            <div className="form-group">
+              <label>Current Receipt Number</label>
+              <input 
+                type="number" 
+                value={settings.receiptSettings?.currentReceiptNumber}
+                onChange={(e) => handleNestedChange('receiptSettings', 'currentReceiptNumber', parseInt(e.target.value))}
+              />
+              <small style={{ color: '#666' }}>
+                Next receipt will use this number. Update this to control receipt numbering.
+              </small>
             </div>
             <div className="toggle-group">
               <div className="toggle-info">

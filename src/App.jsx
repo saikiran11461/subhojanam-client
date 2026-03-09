@@ -30,6 +30,7 @@ import HospitalsSection from "./components/HospitalsSection.jsx"
 import FeaturedOn from "./components/FeaturedOn.jsx"
 import WhySwasthya from "./components/WhySwasthya.jsx"
 import ScrollToTop from "./components/ScrollToTop.jsx"
+import ReceiptPreview from "./pages/ReceiptPreview.js"
 
 function ProtectedRoute({ children }) {
   const token = localStorage.getItem("adminToken")
@@ -73,6 +74,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
+       <Route path="/receipt-preview" element={<ReceiptPreview />} />
       <Route path="/thankyou" element={<ThankYouPage />} />
       <Route path="/admin/login" element={<Login />} />
       <Route path="/x7k9m2p5q8w3" element={<Register />} />
@@ -91,6 +93,7 @@ function App() {
         <Route path="donors" element={<Donors />} />
         <Route path="analytics" element={<Analytics />} />
         <Route path="settings" element={<Settings />} />
+       
       </Route>
     </Routes>
   )
