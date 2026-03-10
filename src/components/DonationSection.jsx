@@ -221,7 +221,7 @@ function DonationSection() {
           : "create-subscription";
 
       const response = await fetch(
-        `https://subhojanam-server-882278565284.europe-west1.run.app/api/payment/${endpoint}`,
+        `https://subhojanam-server-2-882278565284.europe-west1.run.app/api/payment/${endpoint}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
