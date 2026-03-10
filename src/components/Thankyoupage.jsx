@@ -1,10 +1,15 @@
 import { CheckCircle, Heart, Utensils, ArrowLeft, Download } from "lucide-react";
 import { useSearchParams } from "react-router-dom";
+import { useState } from "react";
 import "../styles/thankyou.css";
 import logo from "../assets/logo.png"
 
 const ThankYouPage = () => {
   const [searchParams] = useSearchParams();
+  const [downloading, setDownloading] = useState(false);
+  
+  const donationId = searchParams.get("donationId");
+  const hasCertificate = searchParams.get("certificate") === "true";
 
   const paymentDetails = {
     transactionId: searchParams.get("txn") || "TXN2026021998765",
@@ -16,6 +21,40 @@ const ThankYouPage = () => {
     }),
     seva: "Subhojanam Seva",
     method: searchParams.get("method") || "UPI",
+  };
+
+  const handleDownloadReceipt = async () => {
+    if (!donationId || !hasCertificate) {
+      alert("Receipt download not available for this donation");
+      return;
+    }
+
+    setDownloading(true);
+    try {
+      const response = await fetch(`https://subhojanam-server-2-882278565284.europe-west1.run.app/api/payment/download-receipt/${donationId}`);
+      
+      if (!response.ok) {
+        const error = await response.json();
+        alert(error.message || "Receipt not ready yet. Please wait a moment and try again.");
+        setDownloading(false);
+        return;
+      }
+
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `80G_Receipt_${paymentDetails.transactionId}.pdf`;
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(url);
+      document.body.removeChild(a);
+      setDownloading(false);
+    } catch (error) {
+      console.error("Download error:", error);
+      alert("Failed to download receipt. Please try again later.");
+      setDownloading(false);
+    }
   };
 
   const details = [
@@ -81,10 +120,16 @@ const ThankYouPage = () => {
         </div>
 
         <div className="thankyou-actions">
-          <button className="btn-download" onClick={() => window.print()}>
-            <Download />
-            Download Receipt
-          </button>
+          {hasCertificate && donationId && (
+            <button 
+              className="btn-download" 
+              onClick={handleDownloadReceipt}
+              disabled={downloading}
+            >
+              <Download />
+              {downloading ? "Downloading..." : "Download 80G Receipt"}
+            </button>
+          )}
           <a href="/" className="btn-back">
             <ArrowLeft />
             Back to Home
@@ -93,6 +138,7 @@ const ThankYouPage = () => {
 
         <p className="thankyou-footer">
           A confirmation email has been sent to {paymentDetails.email}.<br />
+          {hasCertificate && "Your 80G receipt will also be sent via WhatsApp shortly."}<br />
           For queries, contact{" "}
           <a href="mailto:seva@harekrishna.org">seva@harekrishna.org</a>
         </p>

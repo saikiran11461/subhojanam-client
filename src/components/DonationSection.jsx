@@ -274,7 +274,9 @@ console.log("Response data:", data);
             name: formData.name,
             email: formData.email,
             method: "Razorpay",
-            type: type === "one" ? "One-Time" : "Monthly"
+            type: type === "one" ? "One-Time" : "Monthly",
+            donationId: data.donationId,
+            certificate: formData.certificate
           });
 
           navigate(`/thankyou?${params.toString()}`);
