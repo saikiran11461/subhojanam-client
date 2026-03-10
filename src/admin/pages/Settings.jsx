@@ -498,12 +498,26 @@ function Settings() {
               <label>Current Receipt Number</label>
               <input 
                 type="number" 
-                value={settings.receiptSettings?.currentReceiptNumber}
+                value={settings.receiptSettings?.currentReceiptNumber || ''}
                 onChange={(e) => handleNestedChange('receiptSettings', 'currentReceiptNumber', parseInt(e.target.value))}
               />
               <small style={{ color: '#666' }}>
                 Next receipt will use this number. Update this to control receipt numbering.
               </small>
+              {settings.receiptSettings?.currentReceiptNumber && (
+                <div style={{ 
+                  marginTop: '8px', 
+                  padding: '8px 12px', 
+                  backgroundColor: '#e8f5e9', 
+                  borderRadius: '4px',
+                  fontSize: '13px',
+                  color: '#2e7d32'
+                }}>
+                  <strong>Next Receipt Number:</strong> {String(settings.receiptSettings.currentReceiptNumber).padStart(5, '0')}
+                  <br />
+                  <strong>Format:</strong> HKMI|{new Date().getFullYear()}|D/VSP|{String(settings.receiptSettings.currentReceiptNumber).padStart(5, '0')}
+                </div>
+              )}
             </div>
             <div className="toggle-group">
               <div className="toggle-info">
