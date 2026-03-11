@@ -17,11 +17,11 @@ function Receipts() {
   const fetchReceipts = async () => {
     try {
       setLoading(true)
-      // Get all paid donations with amount >= 1
-      const response = await adminAPI.getAllDonations()
+      // Get all paid transactions
+      const response = await adminAPI.getAllTransactions({ limit: 1000, status: 'paid' })
       
-      // Filter for paid donations with receipts
-      const paidDonations = response.donations.filter(
+      // Filter for donations with receipts (amount >= 1 and has receiptNumber)
+      const paidDonations = (response.donations || response.transactions || []).filter(
         donation => donation.status === 'paid' && donation.amount >= 1 && donation.receiptNumber
       )
       
