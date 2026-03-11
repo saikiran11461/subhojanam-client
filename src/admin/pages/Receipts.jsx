@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { FileText, Search, Download, Calendar, Phone, Mail, User, IndianRupee, CheckCircle, Eye } from "lucide-react"
+import { FileText, Search, Download, Calendar, Eye, ChevronLeft, ChevronRight } from "lucide-react"
 import adminAPI from "../../services/adminApi"
 import { useNavigate } from "react-router-dom"
 import "../styles/Receipts.css"
@@ -9,6 +9,8 @@ function Receipts() {
   const [loading, setLoading] = useState(true)
   const [searchTerm, setSearchTerm] = useState("")
   const [dateFilter, setDateFilter] = useState("")
+  const [currentPage, setCurrentPage] = useState(1)
+  const itemsPerPage = 10
 
   useEffect(() => {
     fetchReceipts()
@@ -169,6 +171,21 @@ function Receipts() {
     return matchesSearch && matchesDate
   })
 
+  const totalPages = Math.ceil(filteredReceipts.length / itemsPerPage)
+  const startIndex = (currentPage - 1) * itemsPerPage
+  const endIndex = startIndex + itemsPerPage
+  const currentReceipts = filteredReceipts.slice(startIndex, endIndex)
+
+  const handlePageChange = (newPage) => {
+    if (newPage >= 1 && newPage <= totalPages) {
+      setCurrentPage(newPage)
+    }
+  }
+
+  useEffect(() => {
+    setCurrentPage(1)
+  }, [searchTerm, dateFilter])
+
   if (loading) {
     return (
       <div className="receipts-page">
@@ -200,7 +217,7 @@ function Receipts() {
           </div>
         </div>
         <div className="stat-card">
-          <IndianRupee size={24} />
+          <span style={{ fontSize: '24px', fontWeight: 'bold' }}>₹</span>
           <div>
             <p>Total Amount</p>
             <h3>₹{receipts.reduce((sum, r) => sum + (r.amount || 0), 0).toLocaleString()}</h3>
@@ -237,70 +254,111 @@ function Receipts() {
           <p>There are no receipts matching your search criteria</p>
         </div>
       ) : (
-        <div className="receipts-grid">
-          {filteredReceipts.map((receipt) => (
-            <div key={receipt._id} className="receipt-card">
-              <div className="receipt-header">
-                <div className="receipt-number">
-                  <FileText size={20} />
-                  <span>{formatReceiptNumber(receipt.receiptNumber)}</span>
-                </div>
-                <span className="status-badge paid">
-                  <CheckCircle size={14} />
-                  Paid
-                </span>
-              </div>
+        <>
+          <div className="table-container">
+            <table className="receipts-table">
+              <thead>
+                <tr>
+                  <th>Receipt No.</th>
+                  <th>Date</th>
+                  <th>Donor Name</th>
+                  <th>Mobile</th>
+                  <th>Email</th>
+                  <th>Amount</th>
+                  <th>80G</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {currentReceipts.map((receipt) => (
+                  <tr key={receipt._id}>
+                    <td className="receipt-number-cell">
+                      {formatReceiptNumber(receipt.receiptNumber)}
+                    </td>
+                    <td>{formatDate(receipt.receiptGeneratedAt)}</td>
+                    <td className="donor-name-cell">{receipt.name}</td>
+                    <td>{receipt.mobile}</td>
+                    <td>{receipt.email || 'N/A'}</td>
+                    <td className="amount-cell">₹{receipt.amount.toLocaleString()}</td>
+                    <td>
+                      {receipt.certificate ? (
+                        <span className="badge-yes">YES</span>
+                      ) : (
+                        <span className="badge-no">NO</span>
+                      )}
+                    </td>
+                    <td>
+                      <div className="action-buttons">
+                        <button
+                          className="btn-action btn-view"
+                          onClick={() => handleViewReceipt(receipt)}
+                          title="View Receipt"
+                        >
+                          <Eye size={16} />
+                        </button>
+                        <button
+                          className="btn-action btn-download"
+                          onClick={() => handleDownloadReceipt(receipt)}
+                          title="Download Receipt"
+                        >
+                          <Download size={16} />
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
 
-              <div className="receipt-body">
-                <div className="donor-info">
-                  <div className="info-row">
-                    <User size={16} />
-                    <span className="donor-name">{receipt.name}</span>
-                  </div>
-                  <div className="info-row">
-                    <Phone size={16} />
-                    <span>{receipt.mobile}</span>
-                  </div>
-                  <div className="info-row">
-                    <Mail size={16} />
-                    <span>{receipt.email || 'N/A'}</span>
-                  </div>
-                  <div className="info-row">
-                    <IndianRupee size={16} />
-                    <span className="amount">₹{receipt.amount.toLocaleString()}</span>
-                  </div>
-                  <div className="info-row">
-                    <Calendar size={16} />
-                    <span>{formatDate(receipt.receiptGeneratedAt)}</span>
-                  </div>
-                  {receipt.certificate && (
-                    <div className="info-row certificate-req">
-                      <CheckCircle size={16} />
-                      <span>80G Certificate Requested</span>
-                    </div>
-                  )}
-                </div>
-              </div>
-
-              <div className="receipt-footer">
-                <button
-                  className="btn-view"
-                  onClick={() => handleViewReceipt(receipt)}
-                >
-                  <Eye size={16} />
-                  View Receipt
-                </button>
-                <button
-                  className="btn-download"
-                  onClick={() => handleDownloadReceipt(receipt)}
-                >
-                  <Download size={16} />
-                  Download
-                </button>
-              </div>
+          <div className="pagination">
+            <div className="pagination-info">
+              Showing {startIndex + 1} to {Math.min(endIndex, filteredReceipts.length)} of {filteredReceipts.length} receipts
             </div>
-          ))}
-        </div>
+            <div className="pagination-controls">
+              <button
+                className="pagination-btn"
+                onClick={() => handlePageChange(currentPage - 1)}
+                disabled={currentPage === 1}
+              >
+                <ChevronLeft size={18} />
+                Previous
+              </button>
+              
+              <div className="pagination-numbers">
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => {
+                  if (
+                    page === 1 ||
+                    page === totalPages ||
+                    (page >= currentPage - 1 && page <= currentPage + 1)
+                  ) {
+                    return (
+                      <button
+                        key={page}
+                        className={`pagination-number ${page === currentPage ? 'active' : ''}`}
+                        onClick={() => handlePageChange(page)}
+                      >
+                        {page}
+                      </button>
+                    )
+                  } else if (page === currentPage - 2 || page === currentPage + 2) {
+                    return <span key={page} className="pagination-ellipsis">...</span>
+                  }
+                  return null
+                })}
+              </div>
+
+              <button
+                className="pagination-btn"
+                onClick={() => handlePageChange(currentPage + 1)}
+                disabled={currentPage === totalPages}
+              >
+                Next
+                <ChevronRight size={18} />
+              </button>
+            </div>
+          </div>
+        </>
       )}
     </div>
   )
