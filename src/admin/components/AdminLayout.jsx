@@ -10,7 +10,8 @@ import {
   Menu,
   X,
   Bell,
-  RefreshCw
+  RefreshCw,
+  FileText
 } from "lucide-react"
 import "../styles/AdminLayout.css"
 
@@ -32,6 +33,7 @@ function AdminLayout() {
     { path: "/admin/transactions", icon: IndianRupee, label: "Transactions" },
     { path: "/admin/subscriptions", icon: RefreshCw, label: "Subscriptions" },
     { path: "/admin/donors", icon: Users, label: "Donors" },
+    { path: "/admin/receipts", icon: FileText, label: "Receipts" },
     { path: "/admin/analytics", icon: BarChart3, label: "Analytics" },
     { path: "/admin/settings", icon: Settings, label: "Settings" },
   ]

@@ -26,6 +26,7 @@ import Subscriptions from "./admin/pages/Subscriptions.jsx"
 import Donors from "./admin/pages/Donors.jsx"
 import Analytics from "./admin/pages/Analytics.jsx"
 import Settings from "./admin/pages/Settings.jsx"
+import Receipts from "./admin/pages/Receipts.jsx"
 import HospitalsSection from "./components/HospitalsSection.jsx"
 import FeaturedOn from "./components/FeaturedOn.jsx"
 import WhySwasthya from "./components/WhySwasthya.jsx"
@@ -91,6 +92,7 @@ function App() {
         <Route path="transactions" element={<Transactions />} />
         <Route path="subscriptions" element={<Subscriptions />} />
         <Route path="donors" element={<Donors />} />
+        <Route path="receipts" element={<Receipts />} />
         <Route path="analytics" element={<Analytics />} />
         <Route path="settings" element={<Settings />} />
        
