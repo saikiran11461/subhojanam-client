@@ -20,10 +20,17 @@ function Receipts() {
       // Get all paid transactions
       const response = await adminAPI.getAllTransactions({ limit: 1000, status: 'paid' })
       
-      // Filter for donations with receipts (amount >= 1 and has receiptNumber)
-      const paidDonations = (response.donations || response.transactions || []).filter(
-        donation => donation.status === 'paid' && donation.amount >= 1 && donation.receiptNumber
+      console.log('API Response:', response) // Debug log
+      
+      // The response has "transactions" array (not "donations")
+      const allTransactions = response.transactions || []
+      
+      // Filter for ones with receipts (amount >= 1 and has receiptNumber)
+      const paidDonations = allTransactions.filter(
+        txn => txn.status === 'paid' && txn.amount >= 1 && txn.receiptNumber
       )
+      
+      console.log('Filtered receipts:', paidDonations) // Debug log
       
       setReceipts(paidDonations)
     } catch (err) {
