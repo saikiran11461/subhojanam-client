@@ -132,9 +132,9 @@ const DonationReceipt = ({ donationData }) => {
           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
             <div style={{ display: 'flex' }}>
               <p style={{ margin: 0, width: '100px' }}>Bank :</p>
-              <p style={{ margin: 0, marginLeft: '20px' }}>
-                Enrolled by <span style={{ fontWeight: 'bold' }}>RVRD</span>
-              </p>
+ 
+
+ 
             </div>
             <p style={{ margin: 0, width: '40%' }}>
               Towards : <span style={{ fontWeight: 'bold' }}>General Donation</span>

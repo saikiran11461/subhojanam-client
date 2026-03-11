@@ -26,12 +26,13 @@ const ReceiptPreview = () => {
   const autoPrint = searchParams.get('autoPrint') === 'true';
 
   useEffect(() => {
+    document.title = `Annadhan_Certificate_${donationData.receiptNumber || ''}`;
     if (autoPrint) {
       setTimeout(() => {
         window.print();
       }, 500);
     }
-  }, [autoPrint]);
+  }, [autoPrint, donationData.receiptNumber]);
 
   return (
     <div className="min-h-screen bg-muted py-8 flex items-start justify-center">
