@@ -227,7 +227,6 @@ function Subscriptions() {
                 <th>Paid Count</th>
                 <th>Remaining</th>
                 <th>Next Charge</th>
-                <th>Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -262,33 +261,6 @@ function Subscriptions() {
                   </td>
                   <td className="date-cell">
                     {formatTimestamp(sub.nextChargeAt)}
-                  </td>
-                  <td className="action-cell">
-                    {(sub.razorStatus === 'active' || sub.status === 'active') ? (
-                      <button
-                        className="btn-cancel"
-                        onClick={() => handleCancelSubscription(sub._id)}
-                        disabled={cancelingId === sub._id}
-                      >
-                        {cancelingId === sub._id ? (
-                          <>
-                            <RefreshCw size={14} className="spinning" />
-                            Cancelling...
-                          </>
-                        ) : (
-                          <>
-                            <XCircle size={14} />
-                            Cancel
-                          </>
-                        )}
-                      </button>
-                    ) : (sub.razorStatus === 'cancelled' || sub.status === 'cancelled') ? (
-                      <button className="btn-cancelled" disabled>
-                        Cancelled
-                      </button>
-                    ) : (
-                      <span className="no-action">-</span>
-                    )}
                   </td>
                 </tr>
               ))}
