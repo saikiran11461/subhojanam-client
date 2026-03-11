@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
-import { FileText, Search, Download, Calendar, Phone, Mail, User, IndianRupee, CheckCircle } from "lucide-react"
+import { FileText, Search, Download, Calendar, Phone, Mail, User, IndianRupee, CheckCircle, Eye } from "lucide-react"
 import adminAPI from "../../services/adminApi"
+import { useNavigate } from "react-router-dom"
 import "../styles/Receipts.css"
 
 function Receipts() {
@@ -8,7 +9,6 @@ function Receipts() {
   const [loading, setLoading] = useState(true)
   const [searchTerm, setSearchTerm] = useState("")
   const [dateFilter, setDateFilter] = useState("")
-  const [downloadingId, setDownloadingId] = useState(null)
 
   useEffect(() => {
     fetchReceipts()
@@ -17,20 +17,17 @@ function Receipts() {
   const fetchReceipts = async () => {
     try {
       setLoading(true)
-      // Get all paid transactions
       const response = await adminAPI.getAllTransactions({ limit: 1000, status: 'paid' })
       
-      console.log('API Response:', response) // Debug log
+      console.log('API Response:', response)
       
-      // The response has "transactions" array (not "donations")
       const allTransactions = response.transactions || []
       
-      // Filter for ones with receipts (amount >= 1 and has receiptNumber)
       const paidDonations = allTransactions.filter(
         txn => txn.status === 'paid' && txn.amount >= 1 && txn.receiptNumber
       )
       
-      console.log('Filtered receipts:', paidDonations) // Debug log
+      console.log('Filtered receipts:', paidDonations)
       
       setReceipts(paidDonations)
     } catch (err) {
@@ -40,31 +37,107 @@ function Receipts() {
     }
   }
 
-  const handleDownloadReceipt = async (donationId, donorName, receiptNumber) => {
-    try {
-      setDownloadingId(donationId)
-      
-      const response = await fetch(`https://subhojanam-server-2-927388163068.asia-south1.run.app/api/payment/download-receipt/${donationId}`)
-      
-      if (!response.ok) {
-        throw new Error('Failed to download receipt')
-      }
+  const handleViewReceipt = (receipt) => {
+    const convertAmountToWords = (amount) => {
+      const ones = ['', 'ONE', 'TWO', 'THREE', 'FOUR', 'FIVE', 'SIX', 'SEVEN', 'EIGHT', 'NINE'];
+      const tens = ['', '', 'TWENTY', 'THIRTY', 'FORTY', 'FIFTY', 'SIXTY', 'SEVENTY', 'EIGHTY', 'NINETY'];
+      const teens = ['TEN', 'ELEVEN', 'TWELVE', 'THIRTEEN', 'FOURTEEN', 'FIFTEEN', 'SIXTEEN', 'SEVENTEEN', 'EIGHTEEN', 'NINETEEN'];
 
-      const blob = await response.blob()
-      const url = window.URL.createObjectURL(blob)
-      const a = document.createElement('a')
-      a.href = url
-      a.download = `Receipt_${receiptNumber}_${donorName}.pdf`
-      document.body.appendChild(a)
-      a.click()
-      window.URL.revokeObjectURL(url)
-      document.body.removeChild(a)
-    } catch (error) {
-      console.error('Error downloading receipt:', error)
-      alert('Failed to download receipt. Please try again.')
-    } finally {
-      setDownloadingId(null)
-    }
+      const convertLessThanThousand = (num) => {
+        if (num === 0) return '';
+        if (num < 10) return ones[num];
+        if (num < 20) return teens[num - 10];
+        if (num < 100) return tens[Math.floor(num / 10)] + (num % 10 ? ' ' + ones[num % 10] : '');
+        return ones[Math.floor(num / 100)] + ' HUNDRED' + (num % 100 ? ' ' + convertLessThanThousand(num % 100) : '');
+      };
+
+      const num = parseInt(amount);
+      if (num === 0) return 'ZERO RUPEES ONLY';
+
+      let result = '';
+      const crore = Math.floor(num / 10000000);
+      const lakh = Math.floor((num % 10000000) / 100000);
+      const thousand = Math.floor((num % 100000) / 1000);
+      const remainder = num % 1000;
+
+      if (crore > 0) result += convertLessThanThousand(crore) + ' CRORE ';
+      if (lakh > 0) result += convertLessThanThousand(lakh) + ' LAKH ';
+      if (thousand > 0) result += convertLessThanThousand(thousand) + ' THOUSAND ';
+      if (remainder > 0) result += convertLessThanThousand(remainder);
+
+      return result.trim() + ' RUPEES ONLY';
+    };
+
+    const params = new URLSearchParams({
+      name: receipt.name,
+      amount: receipt.amount,
+      amountInWords: convertAmountToWords(receipt.amount),
+      receiptNumber: receipt.receiptNumber,
+      receiptDate: receipt.receiptGeneratedAt || receipt.date,
+      mobile: receipt.mobile,
+      email: receipt.email || '',
+      address: receipt.address || '',
+      city: receipt.city || '',
+      state: receipt.state || '',
+      pincode: receipt.pincode || '',
+      panNumber: receipt.panNumber || '',
+      certificate: receipt.certificate ? 'YES' : 'NO',
+      razorpayPaymentId: receipt.razorpayPaymentId || receipt.id
+    })
+    
+    window.open(`/receipt-preview?${params.toString()}`, '_blank')
+  }
+
+  const handleDownloadReceipt = (receipt) => {
+    const convertAmountToWords = (amount) => {
+      const ones = ['', 'ONE', 'TWO', 'THREE', 'FOUR', 'FIVE', 'SIX', 'SEVEN', 'EIGHT', 'NINE'];
+      const tens = ['', '', 'TWENTY', 'THIRTY', 'FORTY', 'FIFTY', 'SIXTY', 'SEVENTY', 'EIGHTY', 'NINETY'];
+      const teens = ['TEN', 'ELEVEN', 'TWELVE', 'THIRTEEN', 'FOURTEEN', 'FIFTEEN', 'SIXTEEN', 'SEVENTEEN', 'EIGHTEEN', 'NINETEEN'];
+
+      const convertLessThanThousand = (num) => {
+        if (num === 0) return '';
+        if (num < 10) return ones[num];
+        if (num < 20) return teens[num - 10];
+        if (num < 100) return tens[Math.floor(num / 10)] + (num % 10 ? ' ' + ones[num % 10] : '');
+        return ones[Math.floor(num / 100)] + ' HUNDRED' + (num % 100 ? ' ' + convertLessThanThousand(num % 100) : '');
+      };
+
+      const num = parseInt(amount);
+      if (num === 0) return 'ZERO RUPEES ONLY';
+
+      let result = '';
+      const crore = Math.floor(num / 10000000);
+      const lakh = Math.floor((num % 10000000) / 100000);
+      const thousand = Math.floor((num % 100000) / 1000);
+      const remainder = num % 1000;
+
+      if (crore > 0) result += convertLessThanThousand(crore) + ' CRORE ';
+      if (lakh > 0) result += convertLessThanThousand(lakh) + ' LAKH ';
+      if (thousand > 0) result += convertLessThanThousand(thousand) + ' THOUSAND ';
+      if (remainder > 0) result += convertLessThanThousand(remainder);
+
+      return result.trim() + ' RUPEES ONLY';
+    };
+
+    const params = new URLSearchParams({
+      name: receipt.name,
+      amount: receipt.amount,
+      amountInWords: convertAmountToWords(receipt.amount),
+      receiptNumber: receipt.receiptNumber,
+      receiptDate: receipt.receiptGeneratedAt || receipt.date,
+      mobile: receipt.mobile,
+      email: receipt.email || '',
+      address: receipt.address || '',
+      city: receipt.city || '',
+      state: receipt.state || '',
+      pincode: receipt.pincode || '',
+      panNumber: receipt.panNumber || '',
+      certificate: receipt.certificate ? 'YES' : 'NO',
+      razorpayPaymentId: receipt.razorpayPaymentId || receipt.id,
+      autoPrint: 'true'
+    })
+    
+    window.open(`/receipt-preview?${params.toString()}`, '_blank')
   }
 
   const formatDate = (dateString) => {
@@ -211,18 +284,18 @@ function Receipts() {
 
               <div className="receipt-footer">
                 <button
-                  className="btn-download"
-                  onClick={() => handleDownloadReceipt(receipt._id, receipt.name, receipt.receiptNumber)}
-                  disabled={downloadingId === receipt._id}
+                  className="btn-view"
+                  onClick={() => handleViewReceipt(receipt)}
                 >
-                  {downloadingId === receipt._id ? (
-                    <>Downloading...</>
-                  ) : (
-                    <>
-                      <Download size={16} />
-                      Download Receipt
-                    </>
-                  )}
+                  <Eye size={16} />
+                  View Receipt
+                </button>
+                <button
+                  className="btn-download"
+                  onClick={() => handleDownloadReceipt(receipt)}
+                >
+                  <Download size={16} />
+                  Download
                 </button>
               </div>
             </div>

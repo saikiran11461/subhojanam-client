@@ -1,9 +1,36 @@
 import hkmiLogo from "../assets/hkmi-logo.jpg";
 import hkmiStamp from "..//assets/hkmi-stamp-removebg-preview.png";
 
-const DonationReceipt = () => {
+const DonationReceipt = ({ donationData }) => {
+  const formatAmount = (amount) => {
+    return Number(amount).toLocaleString('en-IN');
+  };
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
+  };
+
+  const formatReceiptNumber = (receiptNumber) => {
+    const year = new Date().getFullYear();
+    const paddedNumber = String(receiptNumber).padStart(5, '0');
+    return `HKMI|${year}|D/VSP|${paddedNumber}`;
+  };
+
+  const formatAddress = () => {
+    const parts = [
+      donationData.address,
+      donationData.city,
+      donationData.state,
+      donationData.pincode
+    ].filter(Boolean);
+    return parts.join(' , ');
+  };
   return (
-    <div style={{ width: '718px', margin: '0 auto', background: '#fff', padding: 0, fontFamily: "Helvetica, Arial, sans-serif" }}>
+    <div className="receipt-container" style={{ width: '718px', margin: '0 auto', background: '#fff', padding: 0, fontFamily: "Helvetica, Arial, sans-serif" }}>
       <div style={{ padding: '20px 50px 10px 50px' }}>
         <div style={{ textAlign: 'right', marginTop: '76px', marginBottom: '76px' }}>
           <h2 style={{ fontSize: '16px', fontWeight: 'bold', color: 'hsl(120, 60%, 30%)', fontFamily: "Helvetica, Arial, sans-serif" }}>
@@ -45,20 +72,20 @@ const DonationReceipt = () => {
           </div>
           <div style={{ textAlign: 'right', fontSize: '13px' }}>
             <p style={{ margin: 0, fontFamily: "Helvetica, Arial, sans-serif" }}>
-              DR No. <span style={{ fontWeight: 'bold' }}>HKMI|2024|D/VSP|15740</span>
+              DR No. <span style={{ fontWeight: 'bold' }}>{formatReceiptNumber(donationData.receiptNumber)}</span>
             </p>
           </div>
         </div>
 
         <div style={{ textAlign: 'right', fontSize: '13px', marginBottom: '15px' }}>
           <p style={{ margin: 0, fontFamily: "Helvetica, Arial, sans-serif" }}>
-            Date: <span style={{ fontWeight: 'bold' }}>26/03/2025</span>
+            Date: <span style={{ fontWeight: 'bold' }}>{formatDate(donationData.receiptDate)}</span>
           </p>
         </div>
 
         <div style={{ fontSize: '13px', lineHeight: 2, color: '#000', fontFamily: "Helvetica, Arial, sans-serif" }}>
-          <p style={{ margin: 0 }}>Name of the Donor : MANITEJA</p>
-          <p style={{ margin: 0 }}>Address : SEETHAMMADHARA , , VISAKHAPATNAM , ANDHRA PRADESH - 530017</p>
+          <p style={{ margin: 0 }}>Name of the Donor : {donationData.name}</p>
+          <p style={{ margin: 0 }}>Address : {formatAddress()}</p>
 
           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
             <p style={{ margin: 0 }}>
@@ -71,24 +98,24 @@ const DonationReceipt = () => {
             <p style={{ margin: 0 }}>
               Phone : Res : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Off :
             </p>
-            <p style={{ margin: 0, width: '40%' }}>Mobile : 7682059088</p>
+            <p style={{ margin: 0, width: '40%' }}>Mobile : {donationData.mobile}</p>
           </div>
 
           <p style={{ margin: 0 }}>
-            Tax exemption Required <span style={{ fontWeight: 'bold' }}>NO</span> (Under section 80G, of the Income Tax Act)
+            Tax exemption Required <span style={{ fontWeight: 'bold' }}>{donationData.certificate}</span> (Under section 80G, of the Income Tax Act)
           </p>
 
           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-            <p style={{ margin: 0 }}>E-mail : jamimani19@gmail.com</p>
-            <p style={{ margin: 0, width: '40%' }}>PAN :</p>
+            <p style={{ margin: 0 }}>E-mail : {donationData.email}</p>
+            <p style={{ margin: 0, width: '40%' }}>PAN : {donationData.panNumber}</p>
           </div>
 
           <div style={{ display: 'flex' }}>
             <p style={{ margin: 0, width: '100px' }}>
-              Rs. <span style={{ fontWeight: 'bold' }}>1,700 /-</span>
+              Rs. <span style={{ fontWeight: 'bold' }}>{formatAmount(donationData.amount)} /-</span>
             </p>
             <p style={{ margin: 0, marginLeft: '20px' }}>
-              Rupees : <span style={{ fontWeight: 'bold' }}>ONE THOUSAND SEVEN HUNDRED ONLY</span>
+              Rupees : <span style={{ fontWeight: 'bold' }}>{donationData.amountInWords || ''}</span>
             </p>
           </div>
 
@@ -97,9 +124,9 @@ const DonationReceipt = () => {
               <p style={{ margin: 0, width: '100px' }}>
                 by <span style={{ fontWeight: 'bold' }}>Online</span>
               </p>
-              <p style={{ margin: 0, marginLeft: '20px' }}>Reference No : 393281490150</p>
+              <p style={{ margin: 0, marginLeft: '20px' }}>Reference No : {donationData.razorpayPaymentId}</p>
             </div>
-            <p style={{ margin: 0, width: '40%' }}>Date : 01/02/2025</p>
+            <p style={{ margin: 0, width: '40%' }}>Date : {formatDate(donationData.receiptDate)}</p>
           </div>
 
           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
