@@ -307,7 +307,7 @@ console.log("Response data:", data);
 
   return (
     <>
-      <section className="main-section">
+      <section className="main-section" id="donation-section">
         <div className="box">
 
           <h2>Support Subhojanam Seva</h2>

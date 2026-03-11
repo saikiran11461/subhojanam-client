@@ -1,10 +1,16 @@
 import "../styles/hero.css"
 
 function Hero() {
-   return (
-    <section className="hero">
+  const handleClick = () => {
+    const donationSection = document.getElementById("donation-section");
+    if (donationSection) {
+      donationSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+  return (
+    <section className="hero" onClick={handleClick} style={{ cursor: "pointer" }}>
     </section>
-  )
+  );
 }
 
 export default Hero
