@@ -363,13 +363,28 @@ console.log("Response data:", data);
             </button>
           )}
 
-          <input
-            type="number"
-            placeholder="Enter custom amount (₹)"
-            className="input-box"
-            value={customAmount}
-            onChange={handleCustomChange}
-          />
+          <div style={{ position: 'relative', marginBottom: '8px', width: '100%' }}>
+            <span
+              style={{
+                position: 'absolute',
+                left: '12px',
+                top: '32%',
+                transform: 'translateY(-32%)',
+                color: '#FFD700',
+                fontWeight: 'bold',
+                pointerEvents: 'none',
+                zIndex: 2,
+              }}
+            >₹</span>
+            <input
+              type="number"
+              placeholder="Enter custom amount"
+              className="input-box"
+              value={customAmount}
+              onChange={handleCustomChange}
+              style={{ paddingLeft: '32px', width: '100%' }}
+            />
+          </div>
 
           {finalAmount > 0 && (
             <p className="meal-info">
