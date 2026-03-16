@@ -33,8 +33,8 @@ const DonationReceipt = ({ donationData }) => {
     <div className="receipt-container" style={{ width: '718px', margin: '0 auto', background: '#fff', padding: 0, fontFamily: "Helvetica, Arial, sans-serif" }}>
       <div style={{ padding: '20px 50px 10px 50px' }}>
         <div style={{ textAlign: 'right', marginTop: '76px', marginBottom: '76px' }}>
-          <h2 style={{ fontSize: '16px', fontWeight: 'bold', color: 'hsl(120, 60%, 30%)', fontFamily: "Helvetica, Arial, sans-serif" }}>
-            CONFIRMED RECEIPT
+          <h2 style={{ fontSize: '16px',  fontWeight: 'bold', color: 'hsla(168, 3%, 65%, 1.00)', fontFamily: "Helvetica, Arial, sans-serif" }}>
+            DONATION <h2 style={{ fontSize: '16px', fontWeight: 'bold', color: 'hsla(168, 3%, 65%, 1.00)', fontFamily: "Helvetica, Arial, sans-serif" }}>Acknowledgement</h2>
           </h2>
         </div>
 
