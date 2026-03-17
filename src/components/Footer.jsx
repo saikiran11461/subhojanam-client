@@ -12,8 +12,8 @@ const quickLinks = [
 
 const socialLinks = [
   { icon: Facebook, href: "https://www.facebook.com/hkm.vizag", label: "Facebook" },
-  { icon: Instagram, href: "https://www.instagram.com/hare_krishna_vizag/", label: "Instagram" },
-  { icon: Twitter, href: "https://twitter.com/iskconvizag", label: "Twitter" },
+  { icon: Instagram, href: "https://www.instagram.com/harekrishnavizag", label: "Instagram" },
+  // { icon: Twitter, href: "https://twitter.com/iskconvizag", label: "Twitter" },
   { icon: Youtube, href: "https://www.youtube.com/user/harekrishnavizag", label: "YouTube" },
 ];
 
