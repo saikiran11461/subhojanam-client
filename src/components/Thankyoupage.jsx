@@ -31,7 +31,7 @@ const ThankYouPage = () => {
 
     setDownloading(true);
     try {
-      const response = await fetch(`https://subhojanam-server-2-882278565284.europe-west1.run.app/api/payment/download-receipt/${donationId}`);
+  const response = await fetch(`https://subhojanam-server-main-882278565284.asia-south1.run.app/api/payment/download-receipt/${donationId}`);
       
       if (!response.ok) {
         const error = await response.json();

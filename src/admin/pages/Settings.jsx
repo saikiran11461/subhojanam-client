@@ -149,7 +149,7 @@ function Settings() {
         receiptSettings: settings.receiptSettings
       })
       setMessage({ type: 'success', text: 'Receipt settings saved successfully!' })
-      // Refetch settings to show updated values
+     
       await fetchSettings()
     } catch (err) {
       console.error("Error saving settings:", err)
