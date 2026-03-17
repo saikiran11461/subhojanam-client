@@ -72,7 +72,7 @@ const DonationReceipt = ({ donationData }) => {
           </div>
           <div style={{ textAlign: 'right', fontSize: '13px' }}>
             <p style={{ margin: 0, fontFamily: "Helvetica, Arial, sans-serif" }}>
-              DR No. <span style={{ fontWeight: 'bold' }}>{formatReceiptNumber(donationData.receiptNumber)}</span>
+              Ref No. <span style={{ fontWeight: 'bold' }}>{formatReceiptNumber(donationData.receiptNumber)}</span>
             </p>
           </div>
         </div>
