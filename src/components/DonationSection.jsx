@@ -55,9 +55,19 @@ function DonationSection() {
   };
 
   const handleCustomChange = (e) => {
-    setCustomAmount(e.target.value);
+    let value = e.target.value;
+    // Allow typing any value, validation will be shown below
+    setCustomAmount(value);
     setSelectedAmount(null);
   };
+
+  // Helper for validation
+  const isCustomAmountInvalid = customAmount !== "" && Number(customAmount) < 100;
+          {isCustomAmountInvalid && (
+            <div style={{ color: 'red', fontSize: '13px', marginTop: '2px' }}>
+              Minimum amount for donation is 100
+            </div>
+          )}
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -378,12 +388,18 @@ console.log("Response data:", data);
             >₹</span>
             <input
               type="number"
+              min="100"
               placeholder="Enter custom amount"
               className="input-box"
               value={customAmount}
               onChange={handleCustomChange}
               style={{ paddingLeft: '32px', width: '100%' }}
             />
+            {isCustomAmountInvalid && (
+              <div style={{ color: 'red', fontSize: '13px', marginTop: '2px' }}>
+                Minimum amount for donation is 100
+              </div>
+            )}
           </div>
 
           {finalAmount > 0 && (
@@ -394,8 +410,10 @@ console.log("Response data:", data);
 
           <button
             className="big-btn"
-            disabled={!finalAmount}
-            onClick={() => setShowForm(true)}
+            disabled={!finalAmount || isCustomAmountInvalid}
+            onClick={() => {
+              if (!isCustomAmountInvalid) setShowForm(true);
+            }}
           >
             Donate Now & Feed a Soul →
           </button>
