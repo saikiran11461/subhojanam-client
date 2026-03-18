@@ -137,7 +137,7 @@ const DonationReceipt = ({ donationData }) => {
  
             </div>
             <p style={{ margin: 0, width: '40%' }}>
-              Towards : <span style={{ fontWeight: 'bold' }}>General Donation</span>
+              Towards : <span style={{ fontWeight: 'bold' }}>Annadana Seva</span>
             </p>
           </div>
         </div>

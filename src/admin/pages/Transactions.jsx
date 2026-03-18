@@ -157,10 +157,10 @@ function Transactions() {
               <p>Total Amount</p>
               <h3>₹{(stats?.totalAmount || 0).toLocaleString()}</h3>
             </div>
-            <div className="stat-box">
+            {/* <div className="stat-box">
               <p>Successful</p>
               <h3>{stats?.successfulTransactions || 0}</h3>
-            </div>
+            </div> */}
           </div>
 
           <div className="filters-section">
