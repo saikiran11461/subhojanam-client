@@ -38,11 +38,13 @@ function Transactions() {
   const fetchTransactions = async () => {
     try {
       setLoading(true)
+      // Map 'completed' to 'paid' for backend compatibility
+      const statusForBackend = filterStatus === 'completed' ? 'paid' : filterStatus;
       const response = await adminAPI.getAllTransactions({
         page: currentPage,
         limit: 10,
         search: searchTerm,
-        status: filterStatus
+        status: statusForBackend
       })
 
       setTransactions(response.transactions)
@@ -58,8 +60,10 @@ function Transactions() {
 
   const fetchStats = async () => {
     try {
+      
+      const statusForBackend = filterStatus === 'completed' ? 'paid' : filterStatus;
       const response = await adminAPI.getTransactionStats({
-        status: filterStatus
+        status: statusForBackend
       })
       setStats(response.stats)
     } catch (err) {
