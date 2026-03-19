@@ -246,8 +246,8 @@ function DonationSection() {
 
 const data = await response.json();
 
-console.log("Response status:", response.status);
-console.log("Response data:", data);
+// console.log("Response status:", response.status);
+// console.log("Response data:", data);
 
       if (!data.key) {
         alert("Payment initialization failed");

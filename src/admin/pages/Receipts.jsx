@@ -21,7 +21,7 @@ function Receipts() {
       setLoading(true)
       const response = await adminAPI.getAllTransactions({ limit: 1000, status: 'paid' })
       
-      console.log('API Response:', response)
+      // console.log('API Response:', response)
       
       const allTransactions = response.transactions || []
       
@@ -29,7 +29,7 @@ function Receipts() {
         txn => txn.status === 'paid' && txn.amount >= 1 && txn.receiptNumber
       )
       
-      console.log('Filtered receipts:', paidDonations)
+      // console.log('Filtered receipts:', paidDonations)
       
       setReceipts(paidDonations)
     } catch (err) {
