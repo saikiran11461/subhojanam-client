@@ -353,6 +353,18 @@ function Transactions() {
                     <span className="detail-label">Mobile:</span>
                     <span className="detail-value">{selectedTransaction.mobile}</span>
                   </div>
+                  {selectedTransaction.sevaDate && (
+                    <div className="detail-item">
+                      <span className="detail-label">Seva Date:</span>
+                      <span className="detail-value">{selectedTransaction.sevaDate}</span>
+                    </div>
+                  )}
+                  {selectedTransaction.dob && (
+                    <div className="detail-item">
+                      <span className="detail-label">Date of Birth:</span>
+                      <span className="detail-value">{selectedTransaction.dob}</span>
+                    </div>
+                  )}
                   {selectedTransaction.occasion && (
                     <div className="detail-item">
                       <span className="detail-label">Occasion:</span>
