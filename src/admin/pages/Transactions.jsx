@@ -189,7 +189,7 @@ function Transactions() {
                   }}
                 >
                   <option value="all">All Status</option>
-                  <option value="completed">Completed</option>
+                  <option value="completed">Paid</option>
                   <option value="pending">Pending</option>
                   <option value="failed">Failed</option>
                 </select>
