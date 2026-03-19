@@ -26,10 +26,10 @@ function Dashboard() {
         adminAPI.getMonthlyTrends()
       ])
 
-      console.log('Dashboard Stats:', statsData);
-      console.log('Recent Transactions:', transactionsData);
-      console.log('Top Donors:', donorsData);
-      console.log('Monthly Trends:', trendsData);
+      // console.log('Dashboard Stats:', statsData);
+      // console.log('Recent Transactions:', transactionsData);
+      // console.log('Top Donors:', donorsData);
+      // console.log('Monthly Trends:', trendsData);
 
       setStats(statsData.stats)
       setRecentTransactions(transactionsData.transactions)
