@@ -11,6 +11,8 @@ function DonationSection() {
   const [showForm, setShowForm] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [minAmountLoading, setMinAmountLoading] = useState(false);
+  const [minAmountTried, setMinAmountTried] = useState(false);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -56,9 +58,9 @@ function DonationSection() {
 
   const handleCustomChange = (e) => {
     let value = e.target.value;
-    // Allow typing any value, validation will be shown below
     setCustomAmount(value);
     setSelectedAmount(null);
+    setMinAmountTried(false);
   };
 
   // Helper for validation
@@ -395,7 +397,7 @@ console.log("Response data:", data);
               onChange={handleCustomChange}
               style={{ paddingLeft: '32px', width: '100%' }}
             />
-            {isCustomAmountInvalid && (
+            {isCustomAmountInvalid && !minAmountLoading && minAmountTried && (
               <div style={{ color: 'red', fontSize: '13px', marginTop: '2px' }}>
                 Minimum amount for donation is 100
               </div>
@@ -410,12 +412,23 @@ console.log("Response data:", data);
 
           <button
             className="big-btn"
-            disabled={!finalAmount || isCustomAmountInvalid}
-            onClick={() => {
-              if (!isCustomAmountInvalid) setShowForm(true);
+            disabled={!finalAmount || minAmountLoading}
+            onClick={async () => {
+              setMinAmountTried(true);
+              if (isCustomAmountInvalid) {
+                setMinAmountLoading(true);
+                setErrorMessage("");
+                await new Promise((resolve) => setTimeout(resolve, 1500));
+                setMinAmountLoading(false);
+                setErrorMessage("Minimum amount for donation is 100");
+                return;
+              } else {
+                setErrorMessage("");
+              }
+              setShowForm(true);
             }}
           >
-            Donate Now & Feed a Soul →
+            {minAmountLoading ? "Checking..." : "Donate Now & Feed a Soul →"}
           </button>
 
           <div className="small-info">
@@ -632,7 +645,7 @@ console.log("Response data:", data);
 
             </div>
 
-            {errorMessage && (
+            {errorMessage && !minAmountLoading && (
               <div style={{
                 backgroundColor: '#fee',
                 color: '#c33',
