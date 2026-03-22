@@ -1,6 +1,11 @@
 // UTM CAPTURE AND PERSISTENCE
 // On mount, capture UTM params and persist in localStorage
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Lock, FileText, Check } from "lucide-react";
+import "../styles/donation.css";
+
+function DonationSection() {
   // UTM: Capture and persist on mount
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -16,12 +21,6 @@ import { useEffect } from "react";
       localStorage.setItem("utm", JSON.stringify(utmData));
     }
   }, []);
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { Lock, FileText, Check } from "lucide-react";
-import "../styles/donation.css";
-
-function DonationSection() {
 
   const [type, setType] = useState("one");
   const [selectedAmount, setSelectedAmount] = useState(null);
