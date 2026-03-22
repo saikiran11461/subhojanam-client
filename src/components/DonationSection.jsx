@@ -1,12 +1,11 @@
-// UTM CAPTURE AND PERSISTENCE
-// On mount, capture UTM params and persist in localStorage
+
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Lock, FileText, Check } from "lucide-react";
 import "../styles/donation.css";
 
 function DonationSection() {
-  // UTM: Capture and persist on mount
+
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const utmData = {
@@ -16,7 +15,7 @@ function DonationSection() {
       content: params.get("utm_content"),
       term: params.get("utm_term")
     };
-    // Only persist if at least one UTM param is present
+    
     if (Object.values(utmData).some(Boolean)) {
       localStorage.setItem("utm", JSON.stringify(utmData));
     }
@@ -80,7 +79,6 @@ function DonationSection() {
     setMinAmountTried(false);
   };
 
-  // Helper for validation
   const isCustomAmountInvalid = customAmount !== "" && Number(customAmount) < 100;
           {isCustomAmountInvalid && (
             <div style={{ color: 'red', fontSize: '13px', marginTop: '2px' }}>
@@ -249,7 +247,7 @@ function DonationSection() {
           ? "create-order"
           : "create-subscription";
 
-      // UTM: Attach UTM data from localStorage if present
+      
       let utm = null;
       try {
         utm = JSON.parse(localStorage.getItem("utm"));
