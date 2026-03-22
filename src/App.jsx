@@ -33,6 +33,7 @@ import FeaturedOn from "./components/FeaturedOn.jsx";
 import WhySwasthya from "./components/WhySwasthya.jsx";
 import ScrollToTop from "./components/ScrollToTop.jsx";
 import ReceiptPreview from "./pages/ReceiptPreview.js";
+import Campaigns from "./admin/pages/Campaigns.jsx";
 
 function ProtectedRoute({ children }) {
   const token = localStorage.getItem("adminToken");
@@ -97,6 +98,7 @@ function App() {
         <Route path="analytics" element={<Analytics />} />
         <Route path="utm-stats" element={<UtmStats />} />
         <Route path="settings" element={<Settings />} />
+  <Route path="campaigns" element={<Campaigns />} />
       </Route>
     </Routes>
   );

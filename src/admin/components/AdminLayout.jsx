@@ -34,6 +34,7 @@ function AdminLayout() {
     { path: "/admin/subscriptions", icon: RefreshCw, label: "Subscriptions" },
     { path: "/admin/donors", icon: Users, label: "Donors" },
     { path: "/admin/receipts", icon: FileText, label: "Receipts" },
+    { path: "/admin/campaigns", icon: FileText, label: "Campaigns" },
     { path: "/admin/analytics", icon: BarChart3, label: "Analytics" },
     { path: "/admin/utm-stats", icon: BarChart3, label: "UTM Analytics" },
     { path: "/admin/settings", icon: Settings, label: "Settings" },
