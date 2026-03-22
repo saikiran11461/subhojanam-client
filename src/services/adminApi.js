@@ -1,6 +1,10 @@
+
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://subhojanam-server-main-882278565284.asia-south1.run.app';
 
 class AdminAPI {
+  async getUtmStats() {
+    return this.request('/api/admin/utm-stats');
+  }
   async request(endpoint, options = {}) {
     const url = `${API_BASE_URL}${endpoint}`;
     const token = localStorage.getItem('adminToken');

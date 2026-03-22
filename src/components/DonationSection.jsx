@@ -1,3 +1,21 @@
+// UTM CAPTURE AND PERSISTENCE
+// On mount, capture UTM params and persist in localStorage
+import { useEffect } from "react";
+  // UTM: Capture and persist on mount
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const utmData = {
+      source: params.get("utm_source"),
+      medium: params.get("utm_medium"),
+      campaign: params.get("utm_campaign"),
+      content: params.get("utm_content"),
+      term: params.get("utm_term")
+    };
+    // Only persist if at least one UTM param is present
+    if (Object.values(utmData).some(Boolean)) {
+      localStorage.setItem("utm", JSON.stringify(utmData));
+    }
+  }, []);
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Lock, FileText, Check } from "lucide-react";
@@ -232,14 +250,21 @@ function DonationSection() {
           ? "create-order"
           : "create-subscription";
 
+      // UTM: Attach UTM data from localStorage if present
+      let utm = null;
+      try {
+        utm = JSON.parse(localStorage.getItem("utm"));
+      } catch {}
+
       const response = await fetch(
-  `https://subhojanam-server-main-882278565284.asia-south1.run.app/api/payment/${endpoint}`,
+        `https://subhojanam-server-main-882278565284.asia-south1.run.app/api/payment/${endpoint}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             ...formData,
-            amount: finalAmount
+            amount: finalAmount,
+            ...(utm ? { utm } : {})
           })
         }
       );
